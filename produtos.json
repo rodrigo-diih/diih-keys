@@ -1,1 +1,66 @@
+[
+  {
+    "nome": "Grand Worship Piano",
+    "categoria": "Piano",
+    "tags": [
+      "Grand Piano",
+      "MODX",
+      "Worship",
+      "Live"
+    ],
 
+    "descricao": "Piano moderno com ambiência profissional para palco, igreja e ministrações.",
+
+    "preco": "R$ 49,90",
+
+    "imagem": "assets/covers/grand-worship-piano.jpg",
+
+    "audio": "assets/demos/piano/grand-worship-piano.mp3",
+
+    "link": "#"
+  },
+
+  {
+    "nome": "Studio Grand Collection",
+
+    "categoria": "Piano",
+
+    "tags": [
+      "Studio",
+      "Warm",
+      "Kontakt"
+    ],
+
+    "descricao": "Timbres equilibrados para gravação, worship e mixagens modernas.",
+
+    "preco": "R$ 59,90",
+
+    "imagem": "assets/covers/studio-grand.jpg",
+
+    "audio": "assets/demos/piano/studio-grand.mp3",
+
+    "link": "#"
+  },
+
+  {
+    "nome": "Vintage Upright",
+
+    "categoria": "Piano",
+
+    "tags": [
+      "Vintage",
+      "Soft",
+      "Upright"
+    ],
+
+    "descricao": "Piano vertical vintage com textura intimista e cinematográfica.",
+
+    "preco": "R$ 39,90",
+
+    "imagem": "assets/covers/vintage-upright.jpg",
+
+    "audio": "assets/demos/piano/vintage-upright.mp3",
+
+    "link": "#"
+  }
+]
