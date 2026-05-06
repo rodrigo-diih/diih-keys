@@ -13,8 +13,7 @@ body{
 /* HERO */
 
 .hero{
-  height:100vh;
-
+  min-height:100vh;
   background:
   linear-gradient(
     rgba(0,0,0,0.72),
@@ -30,102 +29,125 @@ body{
   justify-content:center;
 
   text-align:center;
-
   padding:20px;
-
-  position:relative;
 }
 
 .hero-content{
-  position:relative;
-  z-index:2;
   max-width:850px;
 }
 
 .logo{
-  width:340px;
+  width:420px;
   max-width:90%;
-
   margin-bottom:35px;
 }
-
-/* TITULO */
 
 .hero h1{
   font-size:4.5rem;
   line-height:1.1;
-
   margin-bottom:25px;
-
   font-weight:800;
-
   color:white;
 }
 
-/* TEXTO */
-
 .hero p{
   font-size:1.2rem;
-
   color:#d5d5d5;
-
   line-height:1.8;
-
   margin-bottom:45px;
 }
 
-/* BOTÕES */
-
 .buttons{
   display:flex;
-
   justify-content:center;
-
   gap:20px;
-
   flex-wrap:wrap;
 }
 
 .btn{
   padding:16px 34px;
-
   border-radius:14px;
-
   text-decoration:none;
-
   font-weight:600;
-
   transition:0.3s;
-
   font-size:1rem;
 }
 
-/* BOTÃO GOLD */
-
 .btn.gold{
   background:#d6b36a;
-
   color:black;
 }
 
 .btn.gold:hover{
   transform:translateY(-4px);
-
   box-shadow:0 10px 30px rgba(214,179,106,0.35);
 }
 
-/* BOTÃO DARK */
-
 .btn.dark{
   border:1px solid #d6b36a;
-
   color:#d6b36a;
 }
 
 .btn.dark:hover{
   background:#d6b36a;
-
   color:black;
+}
+
+/* PACKS */
+
+.packs{
+  padding:120px 20px;
+  background:#080808;
+  text-align:center;
+}
+
+.packs h2{
+  font-size:3rem;
+  margin-bottom:70px;
+  color:#d6b36a;
+}
+
+.packs-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+  gap:30px;
+  max-width:1200px;
+  margin:auto;
+}
+
+.pack-card{
+  background:#111;
+  border:1px solid rgba(214,179,106,0.15);
+  padding:40px 30px;
+  border-radius:20px;
+  transition:0.3s;
+}
+
+.pack-card:hover{
+  transform:translateY(-8px);
+  border-color:#d6b36a;
+}
+
+.pack-card h3{
+  font-size:1.6rem;
+  margin-bottom:20px;
+  color:white;
+}
+
+.pack-card p{
+  color:#bdbdbd;
+  line-height:1.8;
+  margin-bottom:30px;
+}
+
+.pack-btn{
+  display:inline-block;
+  padding:14px 28px;
+  border-radius:12px;
+  background:#d6b36a;
+  color:black;
+  text-decoration:none;
+  font-weight:600;
 }
 
 /* RESPONSIVO */
@@ -133,11 +155,11 @@ body{
 @media(max-width:768px){
 
   .logo{
-    width:250px;
+    width:300px;
   }
 
   .hero h1{
-    font-size:2.7rem;
+    font-size:2.6rem;
   }
 
   .hero p{
@@ -146,6 +168,10 @@ body{
 
   .btn{
     width:100%;
+  }
+
+  .packs h2{
+    font-size:2.2rem;
   }
 
 }
