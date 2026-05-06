@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Produtos | Rodrigo DiiH</title>
+
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:Arial, sans-serif;
+      background:#0b0b0b;
+      color:white;
+      padding:40px 20px;
+    }
+
+    .container{
+      max-width:900px;
+      margin:auto;
+      background:#111;
+      padding:35px;
+      border-radius:20px;
+      border:1px solid rgba(214,179,106,0.25);
+    }
+
+    h1{
+      color:#d6b36a;
+      margin-bottom:10px;
+    }
+
+    p{
+      color:#ccc;
+      margin-bottom:30px;
+      line-height:1.6;
+    }
+
+    label{
+      display:block;
+      margin-bottom:8px;
+      font-weight:bold;
+      color:#d6b36a;
+    }
+
+    input,
+    select,
+    textarea{
+      width:100%;
+      padding:14px;
+      margin-bottom:22px;
+      border-radius:10px;
+      border:1px solid #333;
+      background:#080808;
+      color:white;
+      font-size:1rem;
+    }
+
+    textarea{
+      min-height:100px;
+      resize:vertical;
+    }
+
+    button{
+      background:#d6b36a;
+      color:black;
+      padding:15px 28px;
+      border:0;
+      border-radius:12px;
+      font-weight:bold;
+      cursor:pointer;
+      margin-right:10px;
+      margin-bottom:15px;
+    }
+
+    pre{
+      background:#050505;
+      border:1px solid #333;
+      padding:25px;
+      border-radius:15px;
+      overflow:auto;
+      white-space:pre-wrap;
+      margin-top:25px;
+      color:#d6d6d6;
+    }
+
+    .aviso{
+      margin-top:25px;
+      color:#aaa;
+      font-size:.95rem;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+
+    <h1>Cadastro de Produto</h1>
+
+    <p>
+      Preencha os campos abaixo e gere o bloco JSON pronto para colar dentro do arquivo <strong>produtos.json</strong>.
+    </p>
+
+    <label>Nome do timbre / pack</label>
+    <input id="nome" placeholder="Ex: Grand Worship Piano">
+
+    <label>Categoria</label>
+    <select id="categoria">
+      <option value="Piano">Piano</option>
+      <option value="Keyboard">Keyboard</option>
+      <option value="Organ">Organ</option>
+      <option value="Guitar">Guitar</option>
+      <option value="Strings">Strings</option>
+      <option value="Brass">Brass</option>
+      <option value="Synth">Synth</option>
+    </select>
+
+    <label>Tags separadas por vírgula</label>
+    <input id="tags" placeholder="Ex: Grand Piano, MODX, Worship, Live">
+
+    <label>Descrição</label>
+    <textarea id="descricao" placeholder="Descreva o timbre de forma curta e vendedora."></textarea>
+
+    <label>Preço</label>
+    <input id="preco" placeholder="Ex: R$ 49,90">
+
+    <label>Caminho da imagem</label>
+    <input id="imagem" placeholder="Ex: assets/covers/grand-worship-piano.jpg">
+
+    <label>Caminho do áudio MP3</label>
+    <input id="audio" placeholder="Ex: assets/demos/piano/grand-worship-piano.mp3">
+
+    <label>Link de compra</label>
+    <input id="link" placeholder="Ex: https://kiwify.com.br/seu-produto">
+
+    <button onclick="gerarJSON()">Gerar JSON</button>
+    <button onclick="copiarJSON()">Copiar JSON</button>
+
+    <pre id="resultado">O JSON aparecerá aqui...</pre>
+
+    <p class="aviso">
+      Depois de copiar, cole esse bloco dentro do array do <strong>produtos.json</strong>.  
+      Se já existir outro produto antes, coloque uma vírgula entre os blocos.
+    </p>
+
+  </div>
+
+  <script>
+    function gerarJSON(){
+      const nome = document.getElementById("nome").value.trim();
+      const categoria = document.getElementById("categoria").value;
+      const tags = document.getElementById("tags").value
+        .split(",")
+        .map(tag => tag.trim())
+        .filter(tag => tag !== "");
+
+      const descricao = document.getElementById("descricao").value.trim();
+      const preco = document.getElementById("preco").value.trim();
+      const imagem = document.getElementById("imagem").value.trim();
+      const audio = document.getElementById("audio").value.trim();
+      const link = document.getElementById("link").value.trim();
+
+      const produto = {
+        nome: nome,
+        categoria: categoria,
+        tags: tags,
+        descricao: descricao,
+        preco: preco,
+        imagem: imagem,
+        audio: audio,
+        link: link
+      };
+
+      document.getElementById("resultado").textContent =
+        JSON.stringify(produto, null, 2);
+    }
+
+    function copiarJSON(){
+      const texto = document.getElementById("resultado").textContent;
+
+      navigator.clipboard.writeText(texto).then(() => {
+        alert("JSON copiado com sucesso!");
+      });
+    }
+  </script>
+
+</body>
+</html>
+
