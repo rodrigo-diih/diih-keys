@@ -1,1 +1,130 @@
 
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+  <title>Sobre | Rodrigo DiiH</title>
+
+  <link rel="stylesheet" href="style.css"/>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+  <section class="hero-small">
+
+    <div class="hero-content">
+
+      <img src="assets/Logo.png" alt="Logo Rodrigo DiiH" class="logo-small">
+
+      <h1>Sobre Mim</h1>
+
+      <p>
+        Tecladista, produtor musical e apaixonado por timbres, síntese e performance ao vivo.
+      </p>
+
+      <a href="index.html" class="btn dark">
+        Voltar ao Início
+      </a>
+
+    </div>
+
+  </section>
+
+  <section class="about-page">
+
+    <div class="about-layout">
+
+      <div class="about-text">
+
+        <h2>Rodrigo DiiH</h2>
+
+        <p>
+          Rodrigo DiiH é tecladista, produtor musical e apaixonado por timbres,
+          síntese e performance ao vivo. Depois de anos utilizando VSTs,
+          workstations e setups profissionais em palco, começou a desenvolver
+          packs de timbres focados em musicalidade real, praticidade e impacto
+          sonoro para músicos modernos.
+        </p>
+
+        <p>
+          Seu trabalho nasceu da experiência prática em igrejas, apresentações
+          ao vivo, ensaios e produções musicais, sempre buscando timbres prontos
+          para funcionar no contexto real de performance — sem complicação e sem
+          excesso de edição.
+        </p>
+
+        <p>
+          Com uma abordagem moderna, Rodrigo une a flexibilidade dos VSTs com a
+          identidade sonora dos grandes teclados e sintetizadores, criando
+          bibliotecas voltadas para worship, palco, ambient, synths, pianos,
+          pads e texturas cinematográficas.
+        </p>
+
+        <p>
+          Cada pack é desenvolvido pensando na experiência do músico ao tocar:
+          dinâmica, presença na mix, sensação ao vivo e inspiração musical.
+          Mais do que apenas presets, a proposta é entregar sons que realmente
+          conectem o músico à performance.
+        </p>
+
+        <p>
+          A proposta da DiiH Keys é simples: oferecer timbres profissionais,
+          modernos e inspiradores para tecladistas que querem elevar o nível do
+          seu setup sem perder praticidade.
+        </p>
+
+      </div>
+
+      <div class="carousel">
+
+        <div class="carousel-track" id="carouselTrack">
+
+          <img src="assets/covers/sobre-1.jpg" alt="Rodrigo DiiH tocando teclado">
+          <img src="assets/covers/sobre-2.jpg" alt="Rodrigo DiiH em performance">
+          <img src="assets/covers/sobre-3.jpg" alt="Rodrigo DiiH no palco">
+          <img src="assets/covers/sobre-4.jpg" alt="Rodrigo DiiH músico">
+
+        </div>
+
+        <div class="carousel-buttons">
+          <button onclick="voltarSlide()">‹</button>
+          <button onclick="avancarSlide()">›</button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+  <script>
+    let slideAtual = 0;
+
+    function atualizarCarousel(){
+      const track = document.getElementById("carouselTrack");
+      track.style.transform = `translateX(-${slideAtual * 100}%)`;
+    }
+
+    function avancarSlide(){
+      const totalSlides = document.querySelectorAll(".carousel-track img").length;
+      slideAtual = (slideAtual + 1) % totalSlides;
+      atualizarCarousel();
+    }
+
+    function voltarSlide(){
+      const totalSlides = document.querySelectorAll(".carousel-track img").length;
+      slideAtual = (slideAtual - 1 + totalSlides) % totalSlides;
+      atualizarCarousel();
+    }
+  </script>
+
+</body>
+</html>
