@@ -18,7 +18,6 @@ body{
 
 .hero{
   min-height:100vh;
-
   background:
   linear-gradient(
     rgba(0,0,0,0.72),
@@ -61,11 +60,10 @@ body{
   margin-bottom:45px;
 }
 
-/* HERO DAS CATEGORIAS */
+/* HERO DAS PÁGINAS INTERNAS */
 
 .hero-small{
   min-height:60vh;
-
   background:
   linear-gradient(
     rgba(0,0,0,0.75),
@@ -107,7 +105,7 @@ body{
   display:inline-block;
 }
 
-/* BUTTONS */
+/* BOTÕES */
 
 .buttons{
   display:flex;
@@ -138,7 +136,7 @@ body{
   transform:translateY(-4px);
 }
 
-/* SECTIONS */
+/* SEÇÕES */
 
 section{
   padding:110px 20px;
@@ -162,27 +160,18 @@ h2{
   margin:auto;
 
   display:grid;
-  grid-template-columns:
-  repeat(auto-fit, minmax(240px,1fr));
-
+  grid-template-columns:repeat(auto-fit, minmax(240px,1fr));
   gap:25px;
 }
 
 .category-card{
   background:#111;
-
   border:1px solid rgba(214,179,106,0.15);
-
   border-radius:18px;
-
   padding:35px 25px;
-
   transition:0.3s;
-
   text-decoration:none;
-
   color:white;
-
   display:block;
 }
 
@@ -214,21 +203,15 @@ h2{
   margin:auto;
 
   display:grid;
-  grid-template-columns:
-  repeat(auto-fit, minmax(280px,1fr));
-
+  grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
   gap:30px;
 }
 
 .pack-card{
   background:#111;
-
   border:1px solid rgba(214,179,106,0.15);
-
   padding:35px 30px;
-
   border-radius:20px;
-
   transition:0.3s;
 }
 
@@ -251,17 +234,11 @@ h2{
 
 .tag{
   display:inline-block;
-
   font-size:.75rem;
-
   color:#d6b36a;
-
   border:1px solid rgba(214,179,106,0.35);
-
   padding:6px 10px;
-
   border-radius:999px;
-
   margin:0 5px 14px 0;
 }
 
@@ -290,54 +267,15 @@ h2{
 
 .pack-btn{
   display:inline-block;
-
   padding:14px 28px;
-
   border-radius:12px;
-
   background:#d6b36a;
-
   color:black;
-
   text-decoration:none;
-
   font-weight:600;
 }
 
-/* RESPONSIVO */
-
-@media(max-width:768px){
-
-  .logo{
-    width:300px;
-  }
-
-  .logo-small{
-    width:220px;
-  }
-
-  .hero h1{
-    font-size:2.6rem;
-  }
-
-  .hero-small h1{
-    font-size:2.5rem;
-  }
-
-  .hero p,
-  .hero-small p{
-    font-size:1rem;
-  }
-
-  .btn{
-    width:100%;
-    text-align:center;
-  }
-
-  h2{
-    font-size:2.2rem;
-  }
-/* SOBRE */
+/* PÁGINA SOBRE */
 
 .about-page{
   background:#080808;
@@ -410,9 +348,39 @@ h2{
   font-weight:bold;
 }
 
-/* RESPONSIVO SOBRE */
+/* RESPONSIVO */
 
 @media(max-width:768px){
+
+  .logo{
+    width:300px;
+  }
+
+  .logo-small{
+    width:220px;
+  }
+
+  .hero h1{
+    font-size:2.6rem;
+  }
+
+  .hero-small h1{
+    font-size:2.5rem;
+  }
+
+  .hero p,
+  .hero-small p{
+    font-size:1rem;
+  }
+
+  .btn{
+    width:100%;
+    text-align:center;
+  }
+
+  h2{
+    font-size:2.2rem;
+  }
 
   .about-layout{
     grid-template-columns:1fr;
@@ -427,5 +395,4 @@ h2{
     height:420px;
   }
 
-}
 }
