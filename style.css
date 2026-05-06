@@ -288,5 +288,23 @@ h2{
   h2{
     font-size:2.2rem;
   }
+.pack-image{
+  width:100%;
+  height:190px;
+  object-fit:cover;
+  border-radius:16px;
+  margin-bottom:22px;
+}
 
+.audio-player{
+  width:100%;
+  margin:10px 0 22px;
+}
+
+.preco{
+  display:block;
+  color:#d6b36a;
+  font-size:1.2rem;
+  margin-bottom:22px;
+}
 }
