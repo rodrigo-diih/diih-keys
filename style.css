@@ -6,22 +6,24 @@
 
 body{
   font-family:'Poppins', sans-serif;
-  background:#0d0d0d;
+  background:#0b0b0b;
   color:white;
 }
+
+/* HERO */
 
 .hero{
   height:100vh;
 
   background:
   linear-gradient(
-    rgba(0,0,0,0.7),
-    rgba(0,0,0,0.8)
+    rgba(0,0,0,0.72),
+    rgba(0,0,0,0.88)
   ),
-  url('https://images.unsplash.com/photo-1511379938547-c1f69419868d?q=80&w=1974&auto=format&fit=crop');
+  url('assets/banner.jpg');
 
   background-size:cover;
-  background-position:center;
+  background-position:center top;
 
   display:flex;
   align-items:center;
@@ -29,47 +31,50 @@ body{
 
   text-align:center;
 
+  padding:20px;
+
   position:relative;
 }
 
 .hero-content{
   position:relative;
   z-index:2;
-
-  max-width:800px;
-
-  padding:20px;
-
-  text-align:center;
+  max-width:850px;
 }
 
 .logo{
-  width:480px;
-  max-width:80%;
-
-  margin-bottom:20px;
-
-  display:block;
-
-  margin-left:auto;
-  margin-right:auto;
-
-  filter:drop-shadow(
-    0 0 20px rgba(214,179,106,0.3)
-  );
-}
-
-.hero p{
-  font-size:1.15rem;
-
-  color:#dddddd;
+  width:340px;
+  max-width:90%;
 
   margin-bottom:35px;
-
-  line-height:1.7;
-
-  text-align:center;
 }
+
+/* TITULO */
+
+.hero h1{
+  font-size:4.5rem;
+  line-height:1.1;
+
+  margin-bottom:25px;
+
+  font-weight:800;
+
+  color:white;
+}
+
+/* TEXTO */
+
+.hero p{
+  font-size:1.2rem;
+
+  color:#d5d5d5;
+
+  line-height:1.8;
+
+  margin-bottom:45px;
+}
+
+/* BOTÕES */
 
 .buttons{
   display:flex;
@@ -82,16 +87,20 @@ body{
 }
 
 .btn{
-  padding:15px 35px;
+  padding:16px 34px;
 
-  border-radius:12px;
+  border-radius:14px;
 
   text-decoration:none;
 
   font-weight:600;
 
   transition:0.3s;
+
+  font-size:1rem;
 }
+
+/* BOTÃO GOLD */
 
 .btn.gold{
   background:#d6b36a;
@@ -100,8 +109,12 @@ body{
 }
 
 .btn.gold:hover{
-  transform:translateY(-3px);
+  transform:translateY(-4px);
+
+  box-shadow:0 10px 30px rgba(214,179,106,0.35);
 }
+
+/* BOTÃO DARK */
 
 .btn.dark{
   border:1px solid #d6b36a;
@@ -113,4 +126,26 @@ body{
   background:#d6b36a;
 
   color:black;
+}
+
+/* RESPONSIVO */
+
+@media(max-width:768px){
+
+  .logo{
+    width:250px;
+  }
+
+  .hero h1{
+    font-size:2.7rem;
+  }
+
+  .hero p{
+    font-size:1rem;
+  }
+
+  .btn{
+    width:100%;
+  }
+
 }
