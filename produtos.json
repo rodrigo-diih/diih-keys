@@ -61,5 +61,17 @@
     "audio": "assets/demos/piano/vintage-upright.mp3",
 
     "link": "#"
-  }
+  },
+  {
+  "nome": "Grand Lady D",
+  "categoria": "Piano",
+  "tags": [
+    "kontakt"
+  ],
+  "descricao": "Grand Lady D é um piano elegante e encorpado, inspirado em grandes clássicos da Nord. Possui graves profundos, médios equilibrados e brilho suave nos agudos, oferecendo dinâmica expressiva e presença profissional para palco e estúdio",
+  "preco": "10,00",
+  "imagem": "assets/covers/lady-d.png",
+  "audio": "assets/demos/",
+  "link": "https://pay.kiwify.com.br/OTQqLyI"
+}
 ]
