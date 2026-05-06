@@ -20,7 +20,7 @@
     }
 
     .container{
-      max-width:900px;
+      max-width:950px;
       margin:auto;
       background:#111;
       padding:35px;
@@ -64,6 +64,13 @@
       resize:vertical;
     }
 
+    small{
+      display:block;
+      color:#999;
+      margin-top:-15px;
+      margin-bottom:22px;
+    }
+
     button{
       background:#d6b36a;
       color:black;
@@ -87,6 +94,27 @@
       color:#d6d6d6;
     }
 
+    .preview{
+      margin:25px 0;
+      padding:20px;
+      border-radius:16px;
+      background:#080808;
+      border:1px solid rgba(214,179,106,0.15);
+    }
+
+    .preview img{
+      width:100%;
+      max-width:360px;
+      border-radius:14px;
+      display:block;
+      margin-bottom:20px;
+    }
+
+    .preview audio{
+      width:100%;
+      max-width:500px;
+    }
+
     .aviso{
       margin-top:25px;
       color:#aaa;
@@ -102,7 +130,9 @@
     <h1>Cadastro de Produto</h1>
 
     <p>
-      Preencha os campos abaixo e gere o bloco JSON pronto para colar dentro do arquivo <strong>produtos.json</strong>.
+      Preencha os campos abaixo. Esta página vai gerar o bloco JSON pronto para colar no arquivo
+      <strong>produtos.json</strong>, usando automaticamente as pastas
+      <strong>assets/covers/</strong> e <strong>assets/demos/</strong>.
     </p>
 
     <label>Nome do timbre / pack</label>
@@ -128,40 +158,91 @@
     <label>Preço</label>
     <input id="preco" placeholder="Ex: R$ 49,90">
 
-    <label>Caminho da imagem</label>
-    <input id="imagem" placeholder="Ex: assets/covers/grand-worship-piano.jpg">
+    <label>Nome da imagem</label>
+    <input id="imagemNome" placeholder="Ex: grand-worship-piano.jpg">
+    <small>O caminho final será: assets/covers/nome-da-imagem.jpg</small>
 
-    <label>Caminho do áudio MP3</label>
-    <input id="audio" placeholder="Ex: assets/demos/piano/grand-worship-piano.mp3">
+    <label>Nome do áudio MP3</label>
+    <input id="audioNome" placeholder="Ex: grand-worship-piano.mp3">
+    <small>O caminho final será: assets/demos/nome-do-audio.mp3</small>
 
     <label>Link de compra</label>
     <input id="link" placeholder="Ex: https://kiwify.com.br/seu-produto">
 
     <button onclick="gerarJSON()">Gerar JSON</button>
     <button onclick="copiarJSON()">Copiar JSON</button>
+    <button onclick="limparCampos()">Limpar</button>
+
+    <div class="preview">
+      <h2 style="color:#d6b36a; margin-bottom:15px;">Prévia dos caminhos</h2>
+
+      <p id="previewImagem">
+        Imagem: assets/covers/
+      </p>
+
+      <p id="previewAudio">
+        Áudio: assets/demos/
+      </p>
+    </div>
 
     <pre id="resultado">O JSON aparecerá aqui...</pre>
 
     <p class="aviso">
-      Depois de copiar, cole esse bloco dentro do array do <strong>produtos.json</strong>.  
+      Depois de copiar, cole esse bloco dentro do array do <strong>produtos.json</strong>.
       Se já existir outro produto antes, coloque uma vírgula entre os blocos.
     </p>
 
   </div>
 
   <script>
+    const imagemInput = document.getElementById("imagemNome");
+    const audioInput = document.getElementById("audioNome");
+
+    imagemInput.addEventListener("input", atualizarPreview);
+    audioInput.addEventListener("input", atualizarPreview);
+
+    function limparNomeArquivo(nome){
+      return nome
+        .trim()
+        .replaceAll("\\\\", "")
+        .replaceAll("/", "")
+        .replace(/\s+/g, "-")
+        .toLowerCase();
+    }
+
+    function atualizarPreview(){
+      const imagemNome = limparNomeArquivo(imagemInput.value);
+      const audioNome = limparNomeArquivo(audioInput.value);
+
+      document.getElementById("previewImagem").textContent =
+        "Imagem: assets/covers/" + imagemNome;
+
+      document.getElementById("previewAudio").textContent =
+        "Áudio: assets/demos/" + audioNome;
+    }
+
     function gerarJSON(){
       const nome = document.getElementById("nome").value.trim();
+
       const categoria = document.getElementById("categoria").value;
+
       const tags = document.getElementById("tags").value
         .split(",")
         .map(tag => tag.trim())
         .filter(tag => tag !== "");
 
       const descricao = document.getElementById("descricao").value.trim();
+
       const preco = document.getElementById("preco").value.trim();
-      const imagem = document.getElementById("imagem").value.trim();
-      const audio = document.getElementById("audio").value.trim();
+
+      const imagemNome = limparNomeArquivo(
+        document.getElementById("imagemNome").value
+      );
+
+      const audioNome = limparNomeArquivo(
+        document.getElementById("audioNome").value
+      );
+
       const link = document.getElementById("link").value.trim();
 
       const produto = {
@@ -170,13 +251,15 @@
         tags: tags,
         descricao: descricao,
         preco: preco,
-        imagem: imagem,
-        audio: audio,
+        imagem: "assets/covers/" + imagemNome,
+        audio: "assets/demos/" + audioNome,
         link: link
       };
 
       document.getElementById("resultado").textContent =
         JSON.stringify(produto, null, 2);
+
+      atualizarPreview();
     }
 
     function copiarJSON(){
@@ -186,8 +269,22 @@
         alert("JSON copiado com sucesso!");
       });
     }
+
+    function limparCampos(){
+      document.querySelectorAll("input, textarea").forEach(campo => {
+        campo.value = "";
+      });
+
+      document.getElementById("categoria").value = "Piano";
+
+      document.getElementById("resultado").textContent =
+        "O JSON aparecerá aqui...";
+
+      atualizarPreview();
+    }
+
+    atualizarPreview();
   </script>
 
 </body>
 </html>
-
