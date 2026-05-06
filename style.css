@@ -133,6 +133,12 @@ h2{
   padding:35px 25px;
 
   transition:0.3s;
+
+  text-decoration:none;
+
+  color:white;
+
+  display:block;
 }
 
 .category-card:hover{
@@ -228,6 +234,35 @@ h2{
   text-decoration:none;
 
   font-weight:600;
+}
+
+/* HERO SMALL */
+
+.hero-small{
+  min-height:55vh;
+
+  background:
+  linear-gradient(
+    rgba(0,0,0,0.75),
+    rgba(0,0,0,0.88)
+  ),
+  url('assets/banner.jpg');
+
+  background-size:cover;
+  background-position:center top;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  text-align:center;
+  padding:40px 20px;
+}
+
+.logo-small{
+  width:260px;
+  max-width:90%;
+  margin-bottom:25px;
 }
 
 /* RESPONSIVO */
