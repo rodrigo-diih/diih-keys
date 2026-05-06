@@ -17,6 +17,8 @@
 
 <body>
 
+  <!-- HERO -->
+
   <section class="hero-small">
 
     <div class="hero-content">
@@ -42,9 +44,13 @@
 
   </section>
 
+  <!-- SOBRE -->
+
   <section class="about-page">
 
     <div class="about-layout">
+
+      <!-- TEXTO -->
 
       <div class="about-text">
 
@@ -93,16 +99,37 @@
 
       <div class="carousel">
 
-        <div class="carousel-track" id="carouselTrack">
+        <img
+          src="assets/covers/sobre-1.jpg"
+          class="carousel-image active"
+        >
 
-          <img src="assets/covers/sobre-1.jpg">
-          <img src="assets/covers/sobre-2.jpg">
-          <img src="assets/covers/sobre-3.jpg">
-          <img src="assets/covers/sobre-4.jpg">
-          <img src="assets/covers/sobre-5.jpg">
-          <img src="assets/covers/sobre-6.jpg">
+        <img
+          src="assets/covers/sobre-2.jpg"
+          class="carousel-image"
+        >
 
-        </div>
+        <img
+          src="assets/covers/sobre-3.jpg"
+          class="carousel-image"
+        >
+
+        <img
+          src="assets/covers/sobre-4.jpg"
+          class="carousel-image"
+        >
+
+        <img
+          src="assets/covers/sobre-5.jpg"
+          class="carousel-image"
+        >
+
+        <img
+          src="assets/covers/sobre-6.jpg"
+          class="carousel-image"
+        >
+
+        <!-- BOTÕES -->
 
         <div class="carousel-buttons">
 
@@ -122,40 +149,43 @@
 
   </section>
 
+  <!-- SCRIPT -->
+
   <script>
 
     let slideAtual = 0;
 
-    const track =
-    document.getElementById("carouselTrack");
-
     const slides =
-    document.querySelectorAll(".carousel-track img");
+    document.querySelectorAll(".carousel-image");
 
-    const totalSlides = slides.length;
+    function mostrarSlide(index){
 
-    function atualizarCarousel(){
+      slides.forEach(slide => {
 
-      track.style.transform =
-      `translateX(-${slideAtual * 100}%)`;
+        slide.classList.remove("active");
+
+      });
+
+      slides[index].classList.add("active");
 
     }
 
     function avancarSlide(){
 
       slideAtual =
-      (slideAtual + 1) % totalSlides;
+      (slideAtual + 1) % slides.length;
 
-      atualizarCarousel();
+      mostrarSlide(slideAtual);
 
     }
 
     function voltarSlide(){
 
       slideAtual =
-      (slideAtual - 1 + totalSlides) % totalSlides;
+      (slideAtual - 1 + slides.length)
+      % slides.length;
 
-      atualizarCarousel();
+      mostrarSlide(slideAtual);
 
     }
 
