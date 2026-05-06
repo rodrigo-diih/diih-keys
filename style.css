@@ -14,8 +14,11 @@ body{
   color:white;
 }
 
+/* HERO */
+
 .hero{
   min-height:100vh;
+
   background:
   linear-gradient(
     rgba(0,0,0,0.72),
@@ -29,6 +32,7 @@ body{
   display:flex;
   align-items:center;
   justify-content:center;
+
   text-align:center;
   padding:20px;
 }
@@ -56,6 +60,8 @@ body{
   line-height:1.8;
   margin-bottom:45px;
 }
+
+/* BUTTONS */
 
 .buttons{
   display:flex;
@@ -86,6 +92,8 @@ body{
   transform:translateY(-4px);
 }
 
+/* SECTIONS */
+
 section{
   padding:110px 20px;
 }
@@ -97,8 +105,39 @@ h2{
   margin-bottom:60px;
 }
 
+/* CATEGORIAS */
+
 .categorias{
   background:#0b0b0b;
+}
+
+.categories-grid{
+  max-width:1200px;
+  margin:auto;
+
+  display:grid;
+
+  grid-template-columns:
+  repeat(auto-fit, minmax(240px,1fr));
+
+  gap:25px;
+}
+
+.category-card{
+  background:#111;
+
+  border:1px solid rgba(214,179,106,0.15);
+
+  border-radius:18px;
+
+  padding:35px 25px;
+
+  transition:0.3s;
+}
+
+.category-card:hover{
+  border-color:#d6b36a;
+  transform:translateY(-6px);
 }
 
 .category-card h3{
@@ -113,20 +152,7 @@ h2{
   font-size:.95rem;
 }
 
-.category-card{
-  background:#111;
-  border:1px solid rgba(214,179,106,0.15);
-  border-radius:18px;
-  padding:35px 20px;
-  text-align:center;
-  font-weight:700;
-  transition:0.3s;
-}
-
-.category-card:hover{
-  border-color:#d6b36a;
-  transform:translateY(-6px);
-}
+/* PACKS */
 
 .packs{
   background:#080808;
@@ -135,16 +161,24 @@ h2{
 .packs-grid{
   max-width:1200px;
   margin:auto;
+
   display:grid;
-  grid-template-columns:repeat(auto-fit, minmax(280px,1fr));
+
+  grid-template-columns:
+  repeat(auto-fit, minmax(280px,1fr));
+
   gap:30px;
 }
 
 .pack-card{
   background:#111;
+
   border:1px solid rgba(214,179,106,0.15);
+
   padding:35px 30px;
+
   border-radius:20px;
+
   transition:0.3s;
 }
 
@@ -155,11 +189,17 @@ h2{
 
 .tag{
   display:inline-block;
+
   font-size:.75rem;
+
   color:#d6b36a;
+
   border:1px solid rgba(214,179,106,0.35);
+
   padding:6px 10px;
+
   border-radius:999px;
+
   margin:0 5px 14px 0;
 }
 
@@ -176,15 +216,24 @@ h2{
 
 .pack-btn{
   display:inline-block;
+
   padding:14px 28px;
+
   border-radius:12px;
+
   background:#d6b36a;
+
   color:black;
+
   text-decoration:none;
+
   font-weight:600;
 }
 
+/* RESPONSIVO */
+
 @media(max-width:768px){
+
   .logo{
     width:300px;
   }
@@ -204,4 +253,5 @@ h2{
   h2{
     font-size:2.2rem;
   }
+
 }
