@@ -17,7 +17,7 @@
   },
   {
     "destaque": true,
-    "ativo": true,
+    "ativo": false,
     "nome": "Studio Grand Collection",
     "categoria": "Piano",
     "tags": [
