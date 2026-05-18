@@ -1,5 +1,7 @@
 [
   {
+    "destaque": true,
+    "ativo": false,
     "nome": "Grand Worship Piano",
     "categoria": "Piano",
     "tags": [
@@ -7,71 +9,56 @@
       "Worship",
       "Live"
     ],
-
     "descricao": "Piano moderno com ambiência profissional para palco, igreja e ministrações.",
-
     "preco": "R$ 49,90",
-
     "imagem": "assets/covers/grand-worship-piano.jpg",
-
     "audio": "assets/demos/piano/grand-worship-piano.mp3",
-
     "link": "#"
   },
-
   {
+    "destaque": true,
+    "ativo": true,
     "nome": "Studio Grand Collection",
-
     "categoria": "Piano",
-
     "tags": [
       "Studio",
       "Warm",
       "Kontakt"
     ],
-
     "descricao": "Timbres equilibrados para gravação, worship e mixagens modernas.",
-
     "preco": "R$ 59,90",
-
     "imagem": "assets/covers/studio-grand.jpg",
-
     "audio": "assets/demos/piano/studio-grand.mp3",
-
     "link": "#"
   },
-
   {
+    "destaque": true,
+    "ativo": true,
     "nome": "Vintage Upright",
-
     "categoria": "Piano",
-
     "tags": [
       "Vintage",
       "Soft",
       "Upright"
     ],
-
     "descricao": "Piano vertical vintage com textura intimista e cinematográfica.",
-
     "preco": "R$ 39,90",
-
     "imagem": "assets/covers/vintage-upright.jpg",
-
     "audio": "assets/demos/piano/vintage-upright.mp3",
-
     "link": "#"
   },
   {
-  "nome": "Grand Lady D",
-  "categoria": "Piano",
-  "tags": [
-    "kontakt"
-  ],
-  "descricao": "Grand Lady D é um piano elegante e encorpado, inspirado em grandes clássicos da Nord. Possui graves profundos, médios equilibrados e brilho suave nos agudos, oferecendo dinâmica expressiva e presença profissional para palco e estúdio",
-  "preco": "10,00",
-  "imagem": "assets/covers/lady-d.png",
-  "audio": "assets/demos/",
-  "link": "https://pay.kiwify.com.br/OTQqLyI"
-}
+    "destaque": true,
+    "ativo": true,
+    "nome": "Grand Lady D",
+    "categoria": "Piano",
+    "tags": [
+      "kontakt"
+    ],
+    "descricao": "Grand Lady D é um piano elegante e encorpado, inspirado em grandes clássicos da Nord. Possui graves profundos, médios equilibrados e brilho suave nos agudos, oferecendo dinâmica expressiva e presença profissional para palco e estúdio",
+    "preco": "10,00",
+    "imagem": "assets/covers/lady-d.png",
+    "audio": "assets/demos/",
+    "link": "https://pay.kiwify.com.br/OTQqLyI"
+  }
 ]
