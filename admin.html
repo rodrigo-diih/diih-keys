@@ -1,290 +1,999 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Admin Produtos | Rodrigo DiiH</title>
-
+  <title>Admin | DiiH Keys</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+    *{ margin:0; padding:0; box-sizing:border-box; }
 
     body{
-      font-family:Arial, sans-serif;
+      font-family:'Poppins', sans-serif;
       background:#0b0b0b;
       color:white;
-      padding:40px 20px;
+      min-height:100vh;
     }
 
-    .container{
-      max-width:950px;
-      margin:auto;
+    /* HEADER */
+    .header{
       background:#111;
-      padding:35px;
-      border-radius:20px;
-      border:1px solid rgba(214,179,106,0.25);
+      border-bottom:1px solid rgba(214,179,106,0.2);
+      padding:20px 40px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      position:sticky;
+      top:0;
+      z-index:100;
     }
 
-    h1{
+    .header-logo{
+      font-size:1.4rem;
+      font-weight:800;
       color:#d6b36a;
-      margin-bottom:10px;
     }
 
-    p{
-      color:#ccc;
+    .header-logo span{
+      color:white;
+      font-weight:300;
+    }
+
+    .header-status{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      font-size:.85rem;
+      color:#888;
+    }
+
+    .status-dot{
+      width:8px;
+      height:8px;
+      border-radius:50%;
+      background:#444;
+    }
+
+    .status-dot.connected{ background:#4caf50; }
+    .status-dot.error{ background:#f44336; }
+
+    /* TOKEN SCREEN */
+    .token-screen{
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+    }
+
+    .token-card{
+      background:#111;
+      border:1px solid rgba(214,179,106,0.2);
+      border-radius:24px;
+      padding:50px 40px;
+      max-width:480px;
+      width:100%;
+      text-align:center;
+    }
+
+    .token-card h2{
+      font-size:1.8rem;
+      color:#d6b36a;
+      margin-bottom:12px;
+    }
+
+    .token-card p{
+      color:#aaa;
+      font-size:.95rem;
+      line-height:1.7;
       margin-bottom:30px;
+    }
+
+    .token-input{
+      width:100%;
+      padding:16px 20px;
+      background:#1a1a1a;
+      border:1px solid rgba(214,179,106,0.3);
+      border-radius:12px;
+      color:white;
+      font-family:'Poppins', sans-serif;
+      font-size:.95rem;
+      margin-bottom:16px;
+      outline:none;
+      transition:.3s;
+    }
+
+    .token-input:focus{
+      border-color:#d6b36a;
+    }
+
+    .token-warning{
+      background:rgba(214,179,106,0.08);
+      border:1px solid rgba(214,179,106,0.2);
+      border-radius:10px;
+      padding:14px 18px;
+      font-size:.82rem;
+      color:#c9a85a;
+      margin-bottom:24px;
+      text-align:left;
       line-height:1.6;
     }
 
-    label{
-      display:block;
+    /* BOTÕES */
+    .btn-gold{
+      background:#d6b36a;
+      color:black;
+      border:none;
+      padding:14px 32px;
+      border-radius:12px;
+      font-family:'Poppins', sans-serif;
+      font-size:1rem;
+      font-weight:700;
+      cursor:pointer;
+      transition:.3s;
+      width:100%;
+    }
+
+    .btn-gold:hover{ transform:translateY(-2px); opacity:.9; }
+    .btn-gold:disabled{ opacity:.5; cursor:not-allowed; transform:none; }
+
+    .btn-outline{
+      background:transparent;
+      color:#d6b36a;
+      border:1px solid rgba(214,179,106,0.4);
+      padding:10px 22px;
+      border-radius:10px;
+      font-family:'Poppins', sans-serif;
+      font-size:.88rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .btn-outline:hover{ border-color:#d6b36a; background:rgba(214,179,106,0.05); }
+
+    .btn-danger{
+      background:transparent;
+      color:#e57373;
+      border:1px solid rgba(229,115,115,0.3);
+      padding:8px 16px;
+      border-radius:8px;
+      font-family:'Poppins', sans-serif;
+      font-size:.82rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:.3s;
+    }
+
+    .btn-danger:hover{ background:rgba(229,115,115,0.1); border-color:#e57373; }
+
+    /* MAIN */
+    .main{
+      max-width:1100px;
+      margin:0 auto;
+      padding:50px 20px;
+      display:none;
+    }
+
+    .main.visible{ display:block; }
+
+    /* TOAST */
+    .toast{
+      position:fixed;
+      bottom:30px;
+      right:30px;
+      background:#1a1a1a;
+      border:1px solid rgba(214,179,106,0.3);
+      border-radius:14px;
+      padding:16px 24px;
+      font-size:.9rem;
+      color:white;
+      z-index:999;
+      transform:translateY(100px);
+      opacity:0;
+      transition:.4s ease;
+      max-width:320px;
+    }
+
+    .toast.show{ transform:translateY(0); opacity:1; }
+    .toast.success{ border-color:#4caf50; color:#81c784; }
+    .toast.error{ border-color:#f44336; color:#e57373; }
+
+    /* SEÇÃO */
+    .section-title{
+      font-size:1.6rem;
+      font-weight:700;
+      color:#d6b36a;
       margin-bottom:8px;
-      font-weight:bold;
+    }
+
+    .section-sub{
+      color:#888;
+      font-size:.9rem;
+      margin-bottom:30px;
+    }
+
+    .divider{
+      border:none;
+      border-top:1px solid rgba(255,255,255,0.06);
+      margin:50px 0;
+    }
+
+    /* STATS */
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
+      gap:16px;
+      margin-bottom:50px;
+    }
+
+    .stat-card{
+      background:#111;
+      border:1px solid rgba(214,179,106,0.12);
+      border-radius:16px;
+      padding:24px 20px;
+      text-align:center;
+    }
+
+    .stat-number{
+      font-size:2.2rem;
+      font-weight:800;
       color:#d6b36a;
     }
 
-    input,
-    select,
-    textarea{
-      width:100%;
-      padding:14px;
-      margin-bottom:22px;
-      border-radius:10px;
-      border:1px solid #333;
-      background:#080808;
-      color:white;
-      font-size:1rem;
+    .stat-label{
+      font-size:.8rem;
+      color:#888;
+      margin-top:4px;
     }
 
-    textarea{
-      min-height:100px;
-      resize:vertical;
+    /* LISTA DE PRODUTOS */
+    .produtos-lista{
+      display:flex;
+      flex-direction:column;
+      gap:16px;
     }
 
-    small{
-      display:block;
-      color:#999;
-      margin-top:-15px;
-      margin-bottom:22px;
-    }
-
-    button{
-      background:#d6b36a;
-      color:black;
-      padding:15px 28px;
-      border:0;
-      border-radius:12px;
-      font-weight:bold;
-      cursor:pointer;
-      margin-right:10px;
-      margin-bottom:15px;
-    }
-
-    pre{
-      background:#050505;
-      border:1px solid #333;
-      padding:25px;
-      border-radius:15px;
-      overflow:auto;
-      white-space:pre-wrap;
-      margin-top:25px;
-      color:#d6d6d6;
-    }
-
-    .preview{
-      margin:25px 0;
-      padding:20px;
+    .produto-item{
+      background:#111;
+      border:1px solid rgba(214,179,106,0.12);
       border-radius:16px;
-      background:#080808;
-      border:1px solid rgba(214,179,106,0.15);
+      padding:20px 24px;
+      display:flex;
+      align-items:center;
+      gap:20px;
+      transition:.3s;
     }
 
-    .preview img{
-      width:100%;
-      max-width:360px;
-      border-radius:14px;
-      display:block;
-      margin-bottom:20px;
+    .produto-item:hover{ border-color:rgba(214,179,106,0.3); }
+
+    .produto-img{
+      width:64px;
+      height:64px;
+      border-radius:10px;
+      object-fit:cover;
+      background:#1a1a1a;
+      flex-shrink:0;
     }
 
-    .preview audio{
-      width:100%;
-      max-width:500px;
+    .produto-info{ flex:1; min-width:0; }
+
+    .produto-nome{
+      font-size:1rem;
+      font-weight:600;
+      margin-bottom:4px;
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
 
-    .aviso{
-      margin-top:25px;
+    .produto-meta{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+
+    .produto-categoria{
+      font-size:.75rem;
+      color:#d6b36a;
+      border:1px solid rgba(214,179,106,0.3);
+      padding:3px 10px;
+      border-radius:999px;
+    }
+
+    .produto-preco{
+      font-size:.85rem;
       color:#aaa;
+    }
+
+    .badge{
+      font-size:.7rem;
+      padding:3px 9px;
+      border-radius:999px;
+      font-weight:600;
+    }
+
+    .badge-destaque{
+      background:rgba(214,179,106,0.15);
+      color:#d6b36a;
+      border:1px solid rgba(214,179,106,0.3);
+    }
+
+    .badge-inativo{
+      background:rgba(100,100,100,0.15);
+      color:#888;
+      border:1px solid rgba(100,100,100,0.3);
+    }
+
+    .produto-acoes{
+      display:flex;
+      gap:8px;
+      flex-shrink:0;
+      flex-wrap:wrap;
+    }
+
+    /* FORMULÁRIO */
+    .form-card{
+      background:#111;
+      border:1px solid rgba(214,179,106,0.15);
+      border-radius:20px;
+      padding:40px;
+    }
+
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:20px;
+    }
+
+    .form-group{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+
+    .form-group.full{ grid-column:1/-1; }
+
+    .form-label{
+      font-size:.85rem;
+      font-weight:600;
+      color:#ccc;
+    }
+
+    .form-label span{
+      color:#888;
+      font-weight:400;
+      font-size:.8rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea{
+      padding:13px 16px;
+      background:#1a1a1a;
+      border:1px solid rgba(214,179,106,0.2);
+      border-radius:10px;
+      color:white;
+      font-family:'Poppins', sans-serif;
+      font-size:.9rem;
+      outline:none;
+      transition:.3s;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus{
+      border-color:#d6b36a;
+    }
+
+    .form-select option{ background:#1a1a1a; }
+
+    .form-textarea{
+      resize:vertical;
+      min-height:100px;
+    }
+
+    .form-path{
+      font-size:.78rem;
+      color:#888;
+      margin-top:4px;
+    }
+
+    .form-path span{ color:#d6b36a; }
+
+    .form-checkboxes{
+      display:flex;
+      gap:24px;
+      flex-wrap:wrap;
+    }
+
+    .form-checkbox{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      cursor:pointer;
+      font-size:.9rem;
+      color:#ccc;
+    }
+
+    .form-checkbox input{
+      width:18px;
+      height:18px;
+      accent-color:#d6b36a;
+      cursor:pointer;
+    }
+
+    .form-actions{
+      display:flex;
+      justify-content:flex-end;
+      gap:12px;
+      margin-top:30px;
+      padding-top:24px;
+      border-top:1px solid rgba(255,255,255,0.06);
+    }
+
+    /* LOADING */
+    .loading{
+      text-align:center;
+      padding:40px;
+      color:#888;
       font-size:.95rem;
+    }
+
+    .spinner{
+      display:inline-block;
+      width:24px;
+      height:24px;
+      border:2px solid rgba(214,179,106,0.2);
+      border-top-color:#d6b36a;
+      border-radius:50%;
+      animation:spin .7s linear infinite;
+      margin-bottom:12px;
+    }
+
+    @keyframes spin{ to{ transform:rotate(360deg); } }
+
+    /* EMPTY */
+    .empty{
+      text-align:center;
+      padding:50px 20px;
+      color:#555;
+    }
+
+    .empty-icon{ font-size:3rem; margin-bottom:16px; }
+
+    /* MODAL */
+    .modal-overlay{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,0.85);
+      z-index:200;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      opacity:0;
+      pointer-events:none;
+      transition:.3s;
+    }
+
+    .modal-overlay.show{ opacity:1; pointer-events:all; }
+
+    .modal{
+      background:#111;
+      border:1px solid rgba(214,179,106,0.2);
+      border-radius:20px;
+      padding:36px;
+      max-width:420px;
+      width:100%;
+      text-align:center;
+    }
+
+    .modal h3{ font-size:1.3rem; margin-bottom:12px; }
+    .modal p{ color:#aaa; font-size:.9rem; line-height:1.7; margin-bottom:28px; }
+
+    .modal-actions{
+      display:flex;
+      gap:12px;
+      justify-content:center;
+    }
+
+    /* RESPONSIVO */
+    @media(max-width:768px){
+      .header{ padding:16px 20px; }
+      .form-grid{ grid-template-columns:1fr; }
+      .form-card{ padding:24px 20px; }
+      .produto-item{ flex-wrap:wrap; }
+      .produto-acoes{ width:100%; }
     }
   </style>
 </head>
-
 <body>
 
-  <div class="container">
+<!-- HEADER -->
+<div class="header">
+  <div class="header-logo">DiiH<span> Keys</span> · Admin</div>
+  <div class="header-status">
+    <div class="status-dot" id="statusDot"></div>
+    <span id="statusText">Desconectado</span>
+    <button class="btn-outline" id="btnLogout" style="display:none" onclick="logout()">Sair</button>
+  </div>
+</div>
 
-    <h1>Cadastro de Produto</h1>
+<!-- TOKEN SCREEN -->
+<div class="token-screen" id="tokenScreen">
+  <div class="token-card">
+    <h2>🔐 Acesso Admin</h2>
+    <p>Cole seu token do GitHub abaixo para acessar e gerenciar os produtos da DiiH Keys.</p>
 
-    <p>
-      Preencha os campos abaixo. Esta página vai gerar o bloco JSON pronto para colar no arquivo
-      <strong>produtos.json</strong>, usando automaticamente as pastas
-      <strong>assets/covers/</strong> e <strong>assets/demos/</strong>.
-    </p>
+    <input
+      type="password"
+      class="token-input"
+      id="tokenInput"
+      placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
+    />
 
-    <label>Nome do timbre / pack</label>
-    <input id="nome" placeholder="Ex: Grand Worship Piano">
-
-    <label>Categoria</label>
-    <select id="categoria">
-      <option value="Piano">Piano</option>
-      <option value="Keyboard">Keyboard</option>
-      <option value="Organ">Organ</option>
-      <option value="Guitar">Guitar</option>
-      <option value="Strings">Strings</option>
-      <option value="Brass">Brass</option>
-      <option value="Synth">Synth</option>
-    </select>
-
-    <label>Tags separadas por vírgula</label>
-    <input id="tags" placeholder="Ex: Grand Piano, MODX, Worship, Live">
-
-    <label>Descrição</label>
-    <textarea id="descricao" placeholder="Descreva o timbre de forma curta e vendedora."></textarea>
-
-    <label>Preço</label>
-    <input id="preco" placeholder="Ex: R$ 49,90">
-
-    <label>Nome da imagem</label>
-    <input id="imagemNome" placeholder="Ex: grand-worship-piano.jpg">
-    <small>O caminho final será: assets/covers/nome-da-imagem.jpg</small>
-
-    <label>Nome do áudio MP3</label>
-    <input id="audioNome" placeholder="Ex: grand-worship-piano.mp3">
-    <small>O caminho final será: assets/demos/nome-do-audio.mp3</small>
-
-    <label>Link de compra</label>
-    <input id="link" placeholder="Ex: https://kiwify.com.br/seu-produto">
-
-    <button onclick="gerarJSON()">Gerar JSON</button>
-    <button onclick="copiarJSON()">Copiar JSON</button>
-    <button onclick="limparCampos()">Limpar</button>
-
-    <div class="preview">
-      <h2 style="color:#d6b36a; margin-bottom:15px;">Prévia dos caminhos</h2>
-
-      <p id="previewImagem">
-        Imagem: assets/covers/
-      </p>
-
-      <p id="previewAudio">
-        Áudio: assets/demos/
-      </p>
+    <div class="token-warning">
+      ⚠️ Nunca compartilhe seu token com ninguém. Ele dá acesso completo ao seu repositório.
     </div>
 
-    <pre id="resultado">O JSON aparecerá aqui...</pre>
+    <button class="btn-gold" id="btnEntrar" onclick="entrar()">Entrar</button>
+  </div>
+</div>
 
-    <p class="aviso">
-      Depois de copiar, cole esse bloco dentro do array do <strong>produtos.json</strong>.
-      Se já existir outro produto antes, coloque uma vírgula entre os blocos.
-    </p>
+<!-- MAIN -->
+<div class="main" id="mainPanel">
 
+  <!-- STATS -->
+  <div class="stats">
+    <div class="stat-card">
+      <div class="stat-number" id="statTotal">0</div>
+      <div class="stat-label">Total de Produtos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="statAtivos">0</div>
+      <div class="stat-label">Ativos</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="statDestaque">0</div>
+      <div class="stat-label">Em Destaque</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number" id="statCategorias">0</div>
+      <div class="stat-label">Categorias</div>
+    </div>
   </div>
 
-  <script>
-    const imagemInput = document.getElementById("imagemNome");
-    const audioInput = document.getElementById("audioNome");
+  <!-- LISTA -->
+  <div class="section-title">Produtos Cadastrados</div>
+  <div class="section-sub">Gerencie seus packs. Alterações são salvas direto no GitHub.</div>
 
-    imagemInput.addEventListener("input", atualizarPreview);
-    audioInput.addEventListener("input", atualizarPreview);
+  <div id="listaProdutos" class="produtos-lista">
+    <div class="loading">
+      <div class="spinner"></div>
+      <div>Carregando produtos...</div>
+    </div>
+  </div>
 
-    function limparNomeArquivo(nome){
-      return nome
-        .trim()
-        .replaceAll("\\\\", "")
-        .replaceAll("/", "")
-        .replace(/\s+/g, "-")
-        .toLowerCase();
+  <hr class="divider"/>
+
+  <!-- FORMULÁRIO -->
+  <div class="section-title">Adicionar Novo Produto</div>
+  <div class="section-sub">Preencha os campos e clique em salvar. O produto aparecerá no site automaticamente.</div>
+
+  <div class="form-card">
+    <div class="form-grid">
+
+      <div class="form-group full">
+        <label class="form-label">Nome do Pack</label>
+        <input type="text" class="form-input" id="fNome" placeholder="Ex: Grand Worship Piano"/>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Categoria</label>
+        <select class="form-select" id="fCategoria">
+          <option value="">Selecione...</option>
+          <option>Piano</option>
+          <option>Keyboard</option>
+          <option>Organ</option>
+          <option>Guitar</option>
+          <option>Strings</option>
+          <option>Brass</option>
+          <option>Synth</option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Preço</label>
+        <input type="text" class="form-input" id="fPreco" placeholder="Ex: R$ 49,90"/>
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label">Tags <span>(separadas por vírgula)</span></label>
+        <input type="text" class="form-input" id="fTags" placeholder="Ex: Grand Piano, Worship, Live"/>
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label">Descrição</label>
+        <textarea class="form-textarea" id="fDescricao" placeholder="Descreva o pack..."></textarea>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nome da Imagem <span>(.jpg ou .png)</span></label>
+        <input type="text" class="form-input" id="fImagem" placeholder="Ex: grand-worship-piano.jpg" oninput="atualizarPreviews()"/>
+        <div class="form-path">Caminho: <span id="previewImagem">assets/covers/</span></div>
+      </div>
+
+      <div class="form-group">
+        <label class="form-label">Nome do Áudio <span>(.mp3)</span></label>
+        <input type="text" class="form-input" id="fAudio" placeholder="Ex: grand-worship-piano.mp3" oninput="atualizarPreviews()"/>
+        <div class="form-path">Caminho: <span id="previewAudio">assets/demos/</span></div>
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label">Link de Compra <span>(Kiwify, Gumroad, etc.)</span></label>
+        <input type="text" class="form-input" id="fLink" placeholder="https://pay.kiwify.com.br/..."/>
+      </div>
+
+      <div class="form-group full">
+        <label class="form-label">Opções</label>
+        <div class="form-checkboxes">
+          <label class="form-checkbox">
+            <input type="checkbox" id="fDestaque" checked/>
+            ⭐ Exibir na página inicial (destaque)
+          </label>
+          <label class="form-checkbox">
+            <input type="checkbox" id="fAtivo" checked/>
+            ✅ Produto ativo (visível no site)
+          </label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="form-actions">
+      <button class="btn-outline" onclick="limparForm()">Limpar</button>
+      <button class="btn-gold" id="btnSalvar" onclick="salvarProduto()">💾 Salvar Produto</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- MODAL CONFIRMAÇÃO -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <h3>Remover Produto</h3>
+    <p id="modalMsg">Tem certeza que deseja remover este produto? Esta ação não pode ser desfeita.</p>
+    <div class="modal-actions">
+      <button class="btn-outline" onclick="fecharModal()">Cancelar</button>
+      <button class="btn-danger" id="btnConfirmarRemover">Remover</button>
+    </div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  const REPO_OWNER = 'rodrigo-diih';
+  const REPO_NAME  = 'diih-keys';
+  const FILE_PATH  = 'produtos.json';
+
+  let TOKEN = '';
+  let produtos = [];
+  let fileSha = '';
+  let indiceParaRemover = -1;
+
+  // ─── AUTH ───────────────────────────────────────────
+  function entrar(){
+    const t = document.getElementById('tokenInput').value.trim();
+    if(!t){ showToast('Cole seu token do GitHub!', 'error'); return; }
+    TOKEN = t;
+    document.getElementById('btnEntrar').disabled = true;
+    document.getElementById('btnEntrar').textContent = 'Conectando...';
+    carregarProdutos();
+  }
+
+  function logout(){
+    TOKEN = '';
+    produtos = [];
+    fileSha = '';
+    document.getElementById('tokenScreen').style.display = 'flex';
+    document.getElementById('mainPanel').classList.remove('visible');
+    document.getElementById('btnLogout').style.display = 'none';
+    document.getElementById('tokenInput').value = '';
+    document.getElementById('btnEntrar').disabled = false;
+    document.getElementById('btnEntrar').textContent = 'Entrar';
+    setStatus(false);
+  }
+
+  function setStatus(ok, msg){
+    const dot  = document.getElementById('statusDot');
+    const text = document.getElementById('statusText');
+    dot.className  = 'status-dot ' + (ok ? 'connected' : ok === false ? 'error' : '');
+    text.textContent = msg || (ok ? 'Conectado' : 'Desconectado');
+  }
+
+  // ─── GITHUB API ─────────────────────────────────────
+  async function githubGet(path){
+    const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,{
+      headers:{
+        'Authorization': `token ${TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json'
+      }
+    });
+    return r;
+  }
+
+  async function githubPut(path, content, sha, message){
+    const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,{
+      method: 'PUT',
+      headers:{
+        'Authorization': `token ${TOKEN}`,
+        'Accept': 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        message,
+        content: btoa(unescape(encodeURIComponent(content))),
+        sha
+      })
+    });
+    return r;
+  }
+
+  // ─── CARREGAR ────────────────────────────────────────
+  async function carregarProdutos(){
+    try{
+      const r = await githubGet(FILE_PATH);
+
+      if(r.status === 401){
+        showToast('Token inválido. Verifique e tente novamente.', 'error');
+        setStatus(false, 'Token inválido');
+        document.getElementById('btnEntrar').disabled = false;
+        document.getElementById('btnEntrar').textContent = 'Entrar';
+        return;
+      }
+
+      if(!r.ok) throw new Error('Erro ao carregar arquivo');
+
+      const data = await r.json();
+      fileSha = data.sha;
+      produtos = JSON.parse(decodeURIComponent(escape(atob(data.content))));
+
+      // migrar produtos antigos sem os campos novos
+      produtos = produtos.map(p => ({
+        destaque: true,
+        ativo: true,
+        ...p
+      }));
+
+      setStatus(true);
+      document.getElementById('tokenScreen').style.display = 'none';
+      document.getElementById('mainPanel').classList.add('visible');
+      document.getElementById('btnLogout').style.display = 'inline-block';
+      renderLista();
+      renderStats();
+
+    } catch(e){
+      showToast('Erro ao conectar. Verifique o token.', 'error');
+      setStatus(false, 'Erro');
+      document.getElementById('btnEntrar').disabled = false;
+      document.getElementById('btnEntrar').textContent = 'Entrar';
+    }
+  }
+
+  // ─── SALVAR NO GITHUB ────────────────────────────────
+  async function salvarNoGithub(mensagem){
+    const json = JSON.stringify(produtos, null, 2);
+    const r = await githubPut(FILE_PATH, json, fileSha, mensagem);
+    if(!r.ok) throw new Error('Erro ao salvar');
+    const data = await r.json();
+    fileSha = data.content.sha;
+  }
+
+  // ─── RENDERIZAR LISTA ────────────────────────────────
+  function renderLista(){
+    const el = document.getElementById('listaProdutos');
+
+    if(!produtos.length){
+      el.innerHTML = `
+        <div class="empty">
+          <div class="empty-icon">🎹</div>
+          <div>Nenhum produto cadastrado ainda.</div>
+        </div>`;
+      return;
     }
 
-    function atualizarPreview(){
-      const imagemNome = limparNomeArquivo(imagemInput.value);
-      const audioNome = limparNomeArquivo(audioInput.value);
+    el.innerHTML = produtos.map((p, i) => `
+      <div class="produto-item">
+        <img
+          class="produto-img"
+          src="${p.imagem || ''}"
+          alt="${p.nome}"
+          onerror="this.style.background='#222';this.src='';"
+        />
+        <div class="produto-info">
+          <div class="produto-nome">${p.nome}</div>
+          <div class="produto-meta">
+            <span class="produto-categoria">${p.categoria}</span>
+            <span class="produto-preco">${p.preco || '—'}</span>
+            ${p.destaque ? '<span class="badge badge-destaque">⭐ Destaque</span>' : ''}
+            ${!p.ativo ? '<span class="badge badge-inativo">Inativo</span>' : ''}
+          </div>
+        </div>
+        <div class="produto-acoes">
+          <button class="btn-outline" onclick="toggleDestaque(${i})">
+            ${p.destaque ? 'Remover destaque' : '⭐ Destacar'}
+          </button>
+          <button class="btn-outline" onclick="toggleAtivo(${i})">
+            ${p.ativo ? 'Desativar' : 'Ativar'}
+          </button>
+          <button class="btn-danger" onclick="confirmarRemover(${i})">Remover</button>
+        </div>
+      </div>
+    `).join('');
+  }
 
-      document.getElementById("previewImagem").textContent =
-        "Imagem: assets/covers/" + imagemNome;
+  // ─── STATS ───────────────────────────────────────────
+  function renderStats(){
+    document.getElementById('statTotal').textContent = produtos.length;
+    document.getElementById('statAtivos').textContent = produtos.filter(p => p.ativo).length;
+    document.getElementById('statDestaque').textContent = produtos.filter(p => p.destaque).length;
+    const cats = new Set(produtos.map(p => p.categoria));
+    document.getElementById('statCategorias').textContent = cats.size;
+  }
 
-      document.getElementById("previewAudio").textContent =
-        "Áudio: assets/demos/" + audioNome;
+  // ─── TOGGLE DESTAQUE ─────────────────────────────────
+  async function toggleDestaque(i){
+    const destaques = produtos.filter(p => p.destaque).length;
+    if(!produtos[i].destaque && destaques >= 6){
+      showToast('Máximo de 6 produtos em destaque na home!', 'error');
+      return;
+    }
+    produtos[i].destaque = !produtos[i].destaque;
+    try{
+      await salvarNoGithub(`Admin: ${produtos[i].destaque ? 'destacou' : 'removeu destaque de'} "${produtos[i].nome}"`);
+      renderLista();
+      renderStats();
+      showToast('Salvo com sucesso!', 'success');
+    } catch(e){
+      showToast('Erro ao salvar.', 'error');
+    }
+  }
+
+  // ─── TOGGLE ATIVO ────────────────────────────────────
+  async function toggleAtivo(i){
+    produtos[i].ativo = !produtos[i].ativo;
+    try{
+      await salvarNoGithub(`Admin: ${produtos[i].ativo ? 'ativou' : 'desativou'} "${produtos[i].nome}"`);
+      renderLista();
+      renderStats();
+      showToast('Salvo com sucesso!', 'success');
+    } catch(e){
+      showToast('Erro ao salvar.', 'error');
+    }
+  }
+
+  // ─── REMOVER ─────────────────────────────────────────
+  function confirmarRemover(i){
+    indiceParaRemover = i;
+    document.getElementById('modalMsg').textContent =
+      `Tem certeza que deseja remover "${produtos[i].nome}"? Esta ação não pode ser desfeita.`;
+    document.getElementById('btnConfirmarRemover').onclick = removerProduto;
+    document.getElementById('modalOverlay').classList.add('show');
+  }
+
+  function fecharModal(){
+    document.getElementById('modalOverlay').classList.remove('show');
+    indiceParaRemover = -1;
+  }
+
+  async function removerProduto(){
+    fecharModal();
+    const nome = produtos[indiceParaRemover].nome;
+    produtos.splice(indiceParaRemover, 1);
+    try{
+      await salvarNoGithub(`Admin: removeu "${nome}"`);
+      renderLista();
+      renderStats();
+      showToast(`"${nome}" removido com sucesso!`, 'success');
+    } catch(e){
+      showToast('Erro ao remover produto.', 'error');
+    }
+  }
+
+  // ─── ADICIONAR ───────────────────────────────────────
+  async function salvarProduto(){
+    const nome      = document.getElementById('fNome').value.trim();
+    const categoria = document.getElementById('fCategoria').value;
+    const preco     = document.getElementById('fPreco').value.trim();
+    const tags      = document.getElementById('fTags').value.trim();
+    const descricao = document.getElementById('fDescricao').value.trim();
+    const imagem    = document.getElementById('fImagem').value.trim();
+    const audio     = document.getElementById('fAudio').value.trim();
+    const link      = document.getElementById('fLink').value.trim();
+    const destaque  = document.getElementById('fDestaque').checked;
+    const ativo     = document.getElementById('fAtivo').checked;
+
+    if(!nome || !categoria){
+      showToast('Preencha pelo menos o nome e a categoria!', 'error');
+      return;
     }
 
-    function gerarJSON(){
-      const nome = document.getElementById("nome").value.trim();
-
-      const categoria = document.getElementById("categoria").value;
-
-      const tags = document.getElementById("tags").value
-        .split(",")
-        .map(tag => tag.trim())
-        .filter(tag => tag !== "");
-
-      const descricao = document.getElementById("descricao").value.trim();
-
-      const preco = document.getElementById("preco").value.trim();
-
-      const imagemNome = limparNomeArquivo(
-        document.getElementById("imagemNome").value
-      );
-
-      const audioNome = limparNomeArquivo(
-        document.getElementById("audioNome").value
-      );
-
-      const link = document.getElementById("link").value.trim();
-
-      const produto = {
-        nome: nome,
-        categoria: categoria,
-        tags: tags,
-        descricao: descricao,
-        preco: preco,
-        imagem: "assets/covers/" + imagemNome,
-        audio: "assets/demos/" + audioNome,
-        link: link
-      };
-
-      document.getElementById("resultado").textContent =
-        JSON.stringify(produto, null, 2);
-
-      atualizarPreview();
+    if(destaque && produtos.filter(p => p.destaque).length >= 6){
+      showToast('Máximo de 6 produtos em destaque. Desmarque "destaque" ou remova outro.', 'error');
+      return;
     }
 
-    function copiarJSON(){
-      const texto = document.getElementById("resultado").textContent;
+    const novoProduto = {
+      nome,
+      categoria,
+      tags: tags ? tags.split(',').map(t => t.trim()).filter(Boolean) : [],
+      descricao,
+      preco,
+      imagem: imagem ? `assets/covers/${imagem}` : '',
+      audio:  audio  ? `assets/demos/${audio}`   : '',
+      link:   link   || '#',
+      destaque,
+      ativo
+    };
 
-      navigator.clipboard.writeText(texto).then(() => {
-        alert("JSON copiado com sucesso!");
-      });
+    produtos.push(novoProduto);
+
+    const btn = document.getElementById('btnSalvar');
+    btn.disabled = true;
+    btn.textContent = 'Salvando...';
+
+    try{
+      await salvarNoGithub(`Admin: adicionou "${nome}"`);
+      renderLista();
+      renderStats();
+      limparForm();
+      showToast(`"${nome}" adicionado com sucesso!`, 'success');
+    } catch(e){
+      produtos.pop();
+      showToast('Erro ao salvar produto.', 'error');
     }
 
-    function limparCampos(){
-      document.querySelectorAll("input, textarea").forEach(campo => {
-        campo.value = "";
-      });
+    btn.disabled = false;
+    btn.textContent = '💾 Salvar Produto';
+  }
 
-      document.getElementById("categoria").value = "Piano";
+  // ─── UTILS ───────────────────────────────────────────
+  function limparForm(){
+    ['fNome','fCategoria','fPreco','fTags','fDescricao','fImagem','fAudio','fLink']
+      .forEach(id => document.getElementById(id).value = '');
+    document.getElementById('fDestaque').checked = true;
+    document.getElementById('fAtivo').checked = true;
+    atualizarPreviews();
+  }
 
-      document.getElementById("resultado").textContent =
-        "O JSON aparecerá aqui...";
+  function atualizarPreviews(){
+    const img   = document.getElementById('fImagem').value.trim();
+    const audio = document.getElementById('fAudio').value.trim();
+    document.getElementById('previewImagem').textContent = `assets/covers/${img}`;
+    document.getElementById('previewAudio').textContent  = `assets/demos/${audio}`;
+  }
 
-      atualizarPreview();
-    }
+  function showToast(msg, type=''){
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = `toast ${type} show`;
+    setTimeout(() => t.classList.remove('show'), 3500);
+  }
 
-    atualizarPreview();
-  </script>
+  // fechar modal clicando fora
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if(e.target === e.currentTarget) fecharModal();
+  });
+
+  // enter no campo token
+  document.getElementById('tokenInput').addEventListener('keydown', e => {
+    if(e.key === 'Enter') entrar();
+  });
+</script>
 
 </body>
 </html>
