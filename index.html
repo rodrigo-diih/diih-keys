@@ -4,172 +4,82 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-
   <title>Rodrigo DiiH</title>
-
   <link rel="stylesheet" href="style.css"/>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 
-<body>
+<!-- data-pagina="index" diz ao script.js para carregar os destaques -->
+<body data-pagina="index">
 
   <!-- HERO -->
-
   <section class="hero">
-
     <div class="hero-content">
-
-      <img
-        src="assets/Logo.png"
-        alt="Logo Rodrigo DiiH"
-        class="logo"
-      >
-
+      <img src="assets/Logo.png" alt="Logo Rodrigo DiiH" class="logo">
       <h1>
         Timbres Profissionais<br>
         para Tecladistas Modernos
       </h1>
-
       <p>
         Packs exclusivos para palco, worship,
         estúdio e performances ao vivo.
         Sons prontos para elevar seu setup.
       </p>
-
     </div>
-
   </section>
 
   <!-- CATEGORIAS -->
-
   <section class="categorias" id="categorias">
-
     <h2>Categorias</h2>
-
     <div class="categories-grid">
-
       <a href="piano.html" class="category-card">
         <h3>Piano</h3>
         <p>Pianos acústicos como Grand e Upright.</p>
       </a>
-
       <a href="keyboard.html" class="category-card">
         <h3>Keyboard</h3>
         <p>Pianos elétricos, clavinets e órgãos vintage.</p>
       </a>
-
       <a href="organ.html" class="category-card">
         <h3>Organ</h3>
         <p>Órgãos de tubo, jazz, gospel e rock clássico.</p>
       </a>
-
       <a href="guitar.html" class="category-card">
         <h3>Guitar</h3>
         <p>Violões, guitarras elétricas e camadas híbridas.</p>
       </a>
-
       <a href="strings.html" class="category-card">
         <h3>Strings</h3>
         <p>Cordas orquestrais, ensembles e instrumentos solo.</p>
       </a>
-
       <a href="brass.html" class="category-card">
         <h3>Brass</h3>
         <p>Trompetes, trombones e seções de metais.</p>
       </a>
-
       <a href="synth.html" class="category-card">
         <h3>Synth</h3>
         <p>Leads, pads, basses e sequências sintetizadas.</p>
       </a>
-
     </div>
-
   </section>
 
-  <!-- PACKS -->
-
+  <!-- PACKS EM DESTAQUE -->
+  <!-- Os cards são gerados automaticamente pelo script.js a partir do produtos.json -->
+  <!-- Para controlar quais aparecem aqui, use o admin.html -->
   <section class="packs" id="packs">
-
     <h2>Packs em Destaque</h2>
-
-    <div class="packs-grid">
-
-      <div class="pack-card">
-
-        <span class="tag">Piano</span>
-        <span class="tag">MODX</span>
-        <span class="tag">Live</span>
-
-        <h3>Grand Worship Piano</h3>
-
-        <p>
-          Piano moderno com ambiência profissional
-          para palco e ministrações.
-        </p>
-
-        <a href="#" class="pack-btn">
-          Comprar Pack
-        </a>
-
-      </div>
-
-      <div class="pack-card">
-
-        <span class="tag">Synth</span>
-        <span class="tag">Pads</span>
-        <span class="tag">Ambient</span>
-
-        <h3>Atmos Pads</h3>
-
-        <p>
-          Ambiências cinematográficas para intros,
-          ministrações e transições.
-        </p>
-
-        <a href="#" class="pack-btn">
-          Comprar Pack
-        </a>
-
-      </div>
-
-      <div class="pack-card">
-
-        <span class="tag">Keyboard</span>
-        <span class="tag">Vintage</span>
-        <span class="tag">Stage</span>
-
-        <h3>Stage Essentials</h3>
-
-        <p>
-          Timbres profissionais para performance
-          ao vivo e gravações.
-        </p>
-
-        <a href="#" class="pack-btn">
-          Comprar Pack
-        </a>
-
-      </div>
-
+    <div class="packs-grid" id="packsGrid">
+      <!-- carregando... -->
     </div>
-
   </section>
 
   <!-- SOBRE MIM -->
-
   <section class="about-page" id="sobre">
-
     <div class="about-layout">
-
       <div class="about-text">
-
         <h2>Sobre Mim</h2>
-
         <p>
           Rodrigo DiiH é tecladista, produtor musical e apaixonado por timbres,
           síntese e performance ao vivo. Depois de anos utilizando VSTs,
@@ -177,28 +87,24 @@
           packs de timbres focados em musicalidade real, praticidade e impacto
           sonoro para músicos modernos.
         </p>
-
         <p>
           Seu trabalho nasceu da experiência prática em igrejas, apresentações
           ao vivo, ensaios e produções musicais, sempre buscando timbres prontos
           para funcionar no contexto real de performance — sem complicação e sem
           excesso de edição.
         </p>
-
         <p>
           Com uma abordagem moderna, Rodrigo une a flexibilidade dos VSTs com a
           identidade sonora dos grandes teclados e sintetizadores, criando
           bibliotecas voltadas para worship, palco, ambient, synths, pianos,
           pads e texturas cinematográficas.
         </p>
-
         <p>
           Cada pack é desenvolvido pensando na experiência do músico ao tocar:
           dinâmica, presença na mix, sensação ao vivo e inspiração musical.
           Mais do que apenas presets, a proposta é entregar sons que realmente
           conectem o músico à performance.
         </p>
-
         <p>
           A proposta da DiiH Keys é simples:
           oferecer timbres profissionais,
@@ -206,65 +112,24 @@
           que querem elevar o nível do seu setup
           sem perder praticidade.
         </p>
-
       </div>
 
       <div class="carousel">
-
         <img src="assets/covers/sobre-1.jpg" class="carousel-image active">
         <img src="assets/covers/sobre-2.jpg" class="carousel-image">
         <img src="assets/covers/sobre-3.jpg" class="carousel-image">
         <img src="assets/covers/sobre-4.jpg" class="carousel-image">
         <img src="assets/covers/sobre-5.jpg" class="carousel-image">
         <img src="assets/covers/sobre-6.jpg" class="carousel-image">
-
         <div class="carousel-buttons">
-
-          <button onclick="voltarSlide()">‹</button>
-          <button onclick="avancarSlide()">›</button>
-
+          <button onclick="voltarSlide()">&#8249;</button>
+          <button onclick="avancarSlide()">&#8250;</button>
         </div>
-
       </div>
-
     </div>
-
   </section>
 
   <script src="script.js"></script>
-
-  <script>
-    let slideAtual = 0;
-
-    const slides =
-    document.querySelectorAll(".carousel-image");
-
-    function mostrarSlide(index){
-      slides.forEach(slide => {
-        slide.classList.remove("active");
-      });
-
-      slides[index].classList.add("active");
-    }
-
-    function avancarSlide(){
-      slideAtual =
-      (slideAtual + 1) % slides.length;
-
-      mostrarSlide(slideAtual);
-    }
-
-    function voltarSlide(){
-      slideAtual =
-      (slideAtual - 1 + slides.length) % slides.length;
-
-      mostrarSlide(slideAtual);
-    }
-
-    setInterval(() => {
-      avancarSlide();
-    }, 3000);
-  </script>
 
 </body>
 </html>
