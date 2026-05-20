@@ -19,7 +19,7 @@
     .header{
       background:#111;
       border-bottom:1px solid rgba(214,179,106,0.2);
-      padding:20px 40px;
+      padding:18px 40px;
       display:flex;
       align-items:center;
       justify-content:space-between;
@@ -28,34 +28,34 @@
       z-index:100;
     }
 
-    .header-logo{
-      font-size:1.4rem;
-      font-weight:800;
-      color:#d6b36a;
-    }
+    .header-logo{ font-size:1.3rem; font-weight:800; color:#d6b36a; }
+    .header-logo span{ color:white; font-weight:300; }
 
-    .header-logo span{
-      color:white;
-      font-weight:300;
-    }
-
-    .header-status{
+    .header-right{
       display:flex;
       align-items:center;
-      gap:10px;
-      font-size:.85rem;
+      gap:14px;
+    }
+
+    .status-pill{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size:.82rem;
       color:#888;
+      background:#1a1a1a;
+      border:1px solid rgba(255,255,255,0.07);
+      padding:6px 14px;
+      border-radius:999px;
     }
 
     .status-dot{
-      width:8px;
-      height:8px;
+      width:7px; height:7px;
       border-radius:50%;
       background:#444;
     }
-
-    .status-dot.connected{ background:#4caf50; }
-    .status-dot.error{ background:#f44336; }
+    .status-dot.on{ background:#4caf50; }
+    .status-dot.err{ background:#f44336; }
 
     /* TOKEN SCREEN */
     .token-screen{
@@ -71,441 +71,331 @@
       border:1px solid rgba(214,179,106,0.2);
       border-radius:24px;
       padding:50px 40px;
-      max-width:480px;
+      max-width:460px;
       width:100%;
       text-align:center;
     }
 
-    .token-card h2{
-      font-size:1.8rem;
-      color:#d6b36a;
-      margin-bottom:12px;
-    }
-
-    .token-card p{
-      color:#aaa;
-      font-size:.95rem;
-      line-height:1.7;
-      margin-bottom:30px;
-    }
+    .token-card h2{ font-size:1.8rem; color:#d6b36a; margin-bottom:10px; }
+    .token-card p{ color:#aaa; font-size:.93rem; line-height:1.7; margin-bottom:28px; }
 
     .token-input{
       width:100%;
-      padding:16px 20px;
+      padding:15px 18px;
       background:#1a1a1a;
-      border:1px solid rgba(214,179,106,0.3);
+      border:1px solid rgba(214,179,106,0.25);
       border-radius:12px;
       color:white;
       font-family:'Poppins', sans-serif;
-      font-size:.95rem;
-      margin-bottom:16px;
+      font-size:.93rem;
+      margin-bottom:14px;
       outline:none;
       transition:.3s;
     }
-
-    .token-input:focus{
-      border-color:#d6b36a;
-    }
+    .token-input:focus{ border-color:#d6b36a; }
 
     .token-warning{
-      background:rgba(214,179,106,0.08);
-      border:1px solid rgba(214,179,106,0.2);
+      background:rgba(214,179,106,0.07);
+      border:1px solid rgba(214,179,106,0.18);
       border-radius:10px;
-      padding:14px 18px;
-      font-size:.82rem;
+      padding:13px 16px;
+      font-size:.8rem;
       color:#c9a85a;
-      margin-bottom:24px;
+      margin-bottom:22px;
       text-align:left;
       line-height:1.6;
     }
 
-    /* BOTÕES */
+    /* BOTOES */
     .btn-gold{
-      background:#d6b36a;
-      color:black;
-      border:none;
-      padding:14px 32px;
-      border-radius:12px;
-      font-family:'Poppins', sans-serif;
-      font-size:1rem;
-      font-weight:700;
-      cursor:pointer;
-      transition:.3s;
-      width:100%;
+      background:#d6b36a; color:black; border:none;
+      padding:13px 28px; border-radius:11px;
+      font-family:'Poppins', sans-serif; font-size:.95rem; font-weight:700;
+      cursor:pointer; transition:.3s;
     }
-
-    .btn-gold:hover{ transform:translateY(-2px); opacity:.9; }
-    .btn-gold:disabled{ opacity:.5; cursor:not-allowed; transform:none; }
+    .btn-gold:hover{ opacity:.88; transform:translateY(-2px); }
+    .btn-gold:disabled{ opacity:.4; cursor:not-allowed; transform:none; }
+    .btn-gold.full{ width:100%; }
 
     .btn-outline{
-      background:transparent;
-      color:#d6b36a;
-      border:1px solid rgba(214,179,106,0.4);
-      padding:10px 22px;
-      border-radius:10px;
-      font-family:'Poppins', sans-serif;
-      font-size:.88rem;
-      font-weight:600;
-      cursor:pointer;
-      transition:.3s;
+      background:transparent; color:#d6b36a;
+      border:1px solid rgba(214,179,106,0.35);
+      padding:9px 20px; border-radius:9px;
+      font-family:'Poppins', sans-serif; font-size:.83rem; font-weight:600;
+      cursor:pointer; transition:.3s;
     }
-
     .btn-outline:hover{ border-color:#d6b36a; background:rgba(214,179,106,0.05); }
+    .btn-outline.sm{ padding:7px 14px; font-size:.78rem; }
 
     .btn-danger{
-      background:transparent;
-      color:#e57373;
+      background:transparent; color:#e57373;
       border:1px solid rgba(229,115,115,0.3);
-      padding:8px 16px;
-      border-radius:8px;
-      font-family:'Poppins', sans-serif;
-      font-size:.82rem;
-      font-weight:600;
-      cursor:pointer;
-      transition:.3s;
+      padding:9px 20px; border-radius:9px;
+      font-family:'Poppins', sans-serif; font-size:.83rem; font-weight:600;
+      cursor:pointer; transition:.3s;
     }
-
     .btn-danger:hover{ background:rgba(229,115,115,0.1); border-color:#e57373; }
+    .btn-danger.sm{ padding:7px 14px; font-size:.78rem; }
+
+    .btn-edit{
+      background:transparent; color:#64b5f6;
+      border:1px solid rgba(100,181,246,0.3);
+      padding:9px 20px; border-radius:9px;
+      font-family:'Poppins', sans-serif; font-size:.83rem; font-weight:600;
+      cursor:pointer; transition:.3s;
+    }
+    .btn-edit:hover{ background:rgba(100,181,246,0.1); border-color:#64b5f6; }
+    .btn-edit.sm{ padding:7px 14px; font-size:.78rem; }
 
     /* MAIN */
-    .main{
-      max-width:1100px;
-      margin:0 auto;
-      padding:50px 20px;
-      display:none;
-    }
-
+    .main{ display:none; }
     .main.visible{ display:block; }
 
-    /* TOAST */
-    .toast{
-      position:fixed;
-      bottom:30px;
-      right:30px;
-      background:#1a1a1a;
-      border:1px solid rgba(214,179,106,0.3);
-      border-radius:14px;
+    /* TABS */
+    .tabs-bar{
+      background:#111;
+      border-bottom:1px solid rgba(214,179,106,0.12);
+      padding:0 40px;
+      display:flex;
+      gap:4px;
+    }
+
+    .tab-btn{
       padding:16px 24px;
-      font-size:.9rem;
-      color:white;
-      z-index:999;
-      transform:translateY(100px);
-      opacity:0;
-      transition:.4s ease;
-      max-width:320px;
-    }
-
-    .toast.show{ transform:translateY(0); opacity:1; }
-    .toast.success{ border-color:#4caf50; color:#81c784; }
-    .toast.error{ border-color:#f44336; color:#e57373; }
-
-    /* SEÇÃO */
-    .section-title{
-      font-size:1.6rem;
-      font-weight:700;
-      color:#d6b36a;
-      margin-bottom:8px;
-    }
-
-    .section-sub{
-      color:#888;
-      font-size:.9rem;
-      margin-bottom:30px;
-    }
-
-    .divider{
+      background:transparent;
       border:none;
-      border-top:1px solid rgba(255,255,255,0.06);
-      margin:50px 0;
+      color:#888;
+      font-family:'Poppins', sans-serif;
+      font-size:.9rem;
+      font-weight:600;
+      cursor:pointer;
+      border-bottom:2px solid transparent;
+      transition:.25s;
     }
+    .tab-btn:hover{ color:#ccc; }
+    .tab-btn.active{ color:#d6b36a; border-bottom-color:#d6b36a; }
+
+    .tab-panel{ display:none; max-width:1100px; margin:0 auto; padding:40px 20px; }
+    .tab-panel.active{ display:block; }
 
     /* STATS */
     .stats{
       display:grid;
-      grid-template-columns:repeat(auto-fit, minmax(160px,1fr));
-      gap:16px;
-      margin-bottom:50px;
+      grid-template-columns:repeat(auto-fit, minmax(150px,1fr));
+      gap:14px;
+      margin-bottom:40px;
     }
 
     .stat-card{
       background:#111;
-      border:1px solid rgba(214,179,106,0.12);
+      border:1px solid rgba(214,179,106,0.1);
       border-radius:16px;
-      padding:24px 20px;
+      padding:22px 18px;
       text-align:center;
     }
 
-    .stat-number{
-      font-size:2.2rem;
-      font-weight:800;
-      color:#d6b36a;
-    }
+    .stat-number{ font-size:2rem; font-weight:800; color:#d6b36a; }
+    .stat-label{ font-size:.78rem; color:#888; margin-top:4px; }
 
-    .stat-label{
-      font-size:.8rem;
-      color:#888;
-      margin-top:4px;
-    }
-
-    /* LISTA DE PRODUTOS */
-    .produtos-lista{
+    /* FILTROS */
+    .filtros{
       display:flex;
-      flex-direction:column;
-      gap:16px;
+      gap:10px;
+      flex-wrap:wrap;
+      margin-bottom:24px;
+      align-items:center;
     }
+
+    .filtro-btn{
+      padding:7px 18px;
+      border-radius:999px;
+      border:1px solid rgba(214,179,106,0.2);
+      background:transparent;
+      color:#888;
+      font-family:'Poppins', sans-serif;
+      font-size:.8rem;
+      font-weight:600;
+      cursor:pointer;
+      transition:.25s;
+    }
+    .filtro-btn:hover{ border-color:#d6b36a; color:#d6b36a; }
+    .filtro-btn.active{ background:#d6b36a; color:black; border-color:#d6b36a; }
+
+    /* LISTA */
+    .produtos-lista{ display:flex; flex-direction:column; gap:14px; }
 
     .produto-item{
       background:#111;
-      border:1px solid rgba(214,179,106,0.12);
+      border:1px solid rgba(214,179,106,0.1);
       border-radius:16px;
-      padding:20px 24px;
+      padding:18px 22px;
       display:flex;
       align-items:center;
-      gap:20px;
+      gap:18px;
       transition:.3s;
     }
-
-    .produto-item:hover{ border-color:rgba(214,179,106,0.3); }
+    .produto-item:hover{ border-color:rgba(214,179,106,0.28); }
 
     .produto-img{
-      width:64px;
-      height:64px;
+      width:60px; height:60px;
       border-radius:10px;
       object-fit:cover;
-      background:#1a1a1a;
+      background:#1e1e1e;
       flex-shrink:0;
     }
 
     .produto-info{ flex:1; min-width:0; }
 
     .produto-nome{
-      font-size:1rem;
-      font-weight:600;
-      margin-bottom:4px;
-      white-space:nowrap;
-      overflow:hidden;
-      text-overflow:ellipsis;
+      font-size:.97rem; font-weight:600;
+      margin-bottom:5px;
+      white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
 
-    .produto-meta{
-      display:flex;
-      align-items:center;
-      gap:12px;
-      flex-wrap:wrap;
-    }
-
-    .produto-categoria{
-      font-size:.75rem;
-      color:#d6b36a;
-      border:1px solid rgba(214,179,106,0.3);
-      padding:3px 10px;
-      border-radius:999px;
-    }
-
-    .produto-preco{
-      font-size:.85rem;
-      color:#aaa;
-    }
+    .produto-meta{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; }
 
     .badge{
-      font-size:.7rem;
-      padding:3px 9px;
-      border-radius:999px;
-      font-weight:600;
+      font-size:.7rem; padding:3px 9px;
+      border-radius:999px; font-weight:600;
     }
+    .badge-cat{ background:rgba(214,179,106,0.1); color:#d6b36a; border:1px solid rgba(214,179,106,0.25); }
+    .badge-dest{ background:rgba(255,214,0,0.08); color:#ffd700; border:1px solid rgba(255,214,0,0.2); }
+    .badge-inativo{ background:rgba(100,100,100,0.1); color:#666; border:1px solid rgba(100,100,100,0.2); }
+    .badge-preco{ color:#aaa; font-size:.8rem; }
 
-    .badge-destaque{
-      background:rgba(214,179,106,0.15);
-      color:#d6b36a;
-      border:1px solid rgba(214,179,106,0.3);
+    .produto-acoes{ display:flex; gap:8px; flex-shrink:0; flex-wrap:wrap; }
+
+    /* EDIT INLINE */
+    .edit-panel{
+      background:#0f0f0f;
+      border:1px solid rgba(100,181,246,0.2);
+      border-radius:14px;
+      padding:24px;
+      margin-top:10px;
+      display:none;
     }
+    .edit-panel.open{ display:block; }
 
-    .badge-inativo{
-      background:rgba(100,100,100,0.15);
-      color:#888;
-      border:1px solid rgba(100,100,100,0.3);
-    }
-
-    .produto-acoes{
-      display:flex;
-      gap:8px;
-      flex-shrink:0;
-      flex-wrap:wrap;
-    }
-
-    /* FORMULÁRIO */
+    /* FORM */
     .form-card{
       background:#111;
-      border:1px solid rgba(214,179,106,0.15);
+      border:1px solid rgba(214,179,106,0.13);
       border-radius:20px;
-      padding:40px;
+      padding:36px;
     }
 
-    .form-grid{
-      display:grid;
-      grid-template-columns:1fr 1fr;
-      gap:20px;
+    .form-card-title{
+      font-size:1.1rem;
+      font-weight:700;
+      color:#d6b36a;
+      margin-bottom:24px;
+      padding-bottom:16px;
+      border-bottom:1px solid rgba(255,255,255,0.06);
     }
 
-    .form-group{
-      display:flex;
-      flex-direction:column;
-      gap:8px;
-    }
-
+    .form-grid{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+    .form-group{ display:flex; flex-direction:column; gap:7px; }
     .form-group.full{ grid-column:1/-1; }
 
-    .form-label{
-      font-size:.85rem;
-      font-weight:600;
-      color:#ccc;
-    }
+    .form-label{ font-size:.83rem; font-weight:600; color:#ccc; }
+    .form-label span{ color:#666; font-weight:400; font-size:.78rem; }
 
-    .form-label span{
-      color:#888;
-      font-weight:400;
-      font-size:.8rem;
-    }
-
-    .form-input,
-    .form-select,
-    .form-textarea{
-      padding:13px 16px;
+    .form-input, .form-select, .form-textarea{
+      padding:12px 15px;
       background:#1a1a1a;
-      border:1px solid rgba(214,179,106,0.2);
+      border:1px solid rgba(214,179,106,0.18);
       border-radius:10px;
       color:white;
       font-family:'Poppins', sans-serif;
-      font-size:.9rem;
+      font-size:.88rem;
       outline:none;
       transition:.3s;
     }
-
-    .form-input:focus,
-    .form-select:focus,
-    .form-textarea:focus{
-      border-color:#d6b36a;
-    }
-
+    .form-input:focus, .form-select:focus, .form-textarea:focus{ border-color:#d6b36a; }
     .form-select option{ background:#1a1a1a; }
+    .form-textarea{ resize:vertical; min-height:90px; }
 
-    .form-textarea{
-      resize:vertical;
-      min-height:100px;
-    }
-
-    .form-path{
-      font-size:.78rem;
-      color:#888;
-      margin-top:4px;
-    }
-
+    .form-path{ font-size:.75rem; color:#666; margin-top:3px; }
     .form-path span{ color:#d6b36a; }
 
-    .form-checkboxes{
-      display:flex;
-      gap:24px;
-      flex-wrap:wrap;
-    }
+    .form-checkboxes{ display:flex; gap:22px; flex-wrap:wrap; }
 
     .form-checkbox{
-      display:flex;
-      align-items:center;
-      gap:10px;
-      cursor:pointer;
-      font-size:.9rem;
-      color:#ccc;
+      display:flex; align-items:center; gap:9px;
+      cursor:pointer; font-size:.88rem; color:#bbb;
     }
-
-    .form-checkbox input{
-      width:18px;
-      height:18px;
-      accent-color:#d6b36a;
-      cursor:pointer;
-    }
+    .form-checkbox input{ width:16px; height:16px; accent-color:#d6b36a; cursor:pointer; }
 
     .form-actions{
-      display:flex;
-      justify-content:flex-end;
-      gap:12px;
-      margin-top:30px;
-      padding-top:24px;
-      border-top:1px solid rgba(255,255,255,0.06);
+      display:flex; justify-content:flex-end; gap:10px;
+      margin-top:26px; padding-top:20px;
+      border-top:1px solid rgba(255,255,255,0.05);
     }
 
-    /* LOADING */
-    .loading{
-      text-align:center;
-      padding:40px;
-      color:#888;
-      font-size:.95rem;
-    }
-
+    /* EMPTY / LOADING */
+    .loading{ text-align:center; padding:40px; color:#666; }
     .spinner{
-      display:inline-block;
-      width:24px;
-      height:24px;
-      border:2px solid rgba(214,179,106,0.2);
+      display:inline-block; width:22px; height:22px;
+      border:2px solid rgba(214,179,106,0.15);
       border-top-color:#d6b36a;
       border-radius:50%;
       animation:spin .7s linear infinite;
-      margin-bottom:12px;
+      margin-bottom:10px;
     }
-
     @keyframes spin{ to{ transform:rotate(360deg); } }
 
-    /* EMPTY */
-    .empty{
-      text-align:center;
-      padding:50px 20px;
-      color:#555;
-    }
-
-    .empty-icon{ font-size:3rem; margin-bottom:16px; }
+    .empty{ text-align:center; padding:50px; color:#555; }
+    .empty-icon{ font-size:2.8rem; margin-bottom:12px; }
 
     /* MODAL */
     .modal-overlay{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,0.85);
-      z-index:200;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      position:fixed; inset:0;
+      background:rgba(0,0,0,0.88);
+      z-index:300;
+      display:flex; align-items:center; justify-content:center;
       padding:20px;
-      opacity:0;
-      pointer-events:none;
-      transition:.3s;
+      opacity:0; pointer-events:none; transition:.3s;
     }
-
     .modal-overlay.show{ opacity:1; pointer-events:all; }
 
     .modal{
       background:#111;
       border:1px solid rgba(214,179,106,0.2);
       border-radius:20px;
-      padding:36px;
-      max-width:420px;
-      width:100%;
+      padding:34px;
+      max-width:400px; width:100%;
       text-align:center;
     }
+    .modal h3{ font-size:1.2rem; margin-bottom:10px; }
+    .modal p{ color:#aaa; font-size:.88rem; line-height:1.7; margin-bottom:26px; }
+    .modal-actions{ display:flex; gap:10px; justify-content:center; }
 
-    .modal h3{ font-size:1.3rem; margin-bottom:12px; }
-    .modal p{ color:#aaa; font-size:.9rem; line-height:1.7; margin-bottom:28px; }
-
-    .modal-actions{
-      display:flex;
-      gap:12px;
-      justify-content:center;
+    /* TOAST */
+    .toast{
+      position:fixed; bottom:28px; right:28px;
+      background:#1a1a1a;
+      border:1px solid rgba(214,179,106,0.25);
+      border-radius:14px;
+      padding:14px 22px;
+      font-size:.88rem; color:white;
+      z-index:999;
+      transform:translateY(80px); opacity:0;
+      transition:.35s ease;
+      max-width:300px;
     }
+    .toast.show{ transform:translateY(0); opacity:1; }
+    .toast.success{ border-color:#4caf50; color:#81c784; }
+    .toast.error{ border-color:#f44336; color:#e57373; }
 
     /* RESPONSIVO */
     @media(max-width:768px){
-      .header{ padding:16px 20px; }
+      .header{ padding:14px 16px; }
+      .tabs-bar{ padding:0 16px; overflow-x:auto; }
+      .tab-btn{ padding:14px 16px; font-size:.82rem; white-space:nowrap; }
       .form-grid{ grid-template-columns:1fr; }
-      .form-card{ padding:24px 20px; }
+      .form-card{ padding:20px 16px; }
       .produto-item{ flex-wrap:wrap; }
-      .produto-acoes{ width:100%; }
+      .produto-acoes{ width:100%; justify-content:flex-end; }
     }
   </style>
 </head>
@@ -514,10 +404,12 @@
 <!-- HEADER -->
 <div class="header">
   <div class="header-logo">DiiH<span> Keys</span> · Admin</div>
-  <div class="header-status">
-    <div class="status-dot" id="statusDot"></div>
-    <span id="statusText">Desconectado</span>
-    <button class="btn-outline" id="btnLogout" style="display:none" onclick="logout()">Sair</button>
+  <div class="header-right">
+    <div class="status-pill">
+      <div class="status-dot" id="statusDot"></div>
+      <span id="statusText">Desconectado</span>
+    </div>
+    <button class="btn-danger sm" id="btnLogout" style="display:none" onclick="logout()">Sair</button>
   </div>
 </div>
 
@@ -525,146 +417,152 @@
 <div class="token-screen" id="tokenScreen">
   <div class="token-card">
     <h2>🔐 Acesso Admin</h2>
-    <p>Cole seu token do GitHub abaixo para acessar e gerenciar os produtos da DiiH Keys.</p>
-
-    <input
-      type="password"
-      class="token-input"
-      id="tokenInput"
-      placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"
-    />
-
-    <div class="token-warning">
-      ⚠️ Nunca compartilhe seu token com ninguém. Ele dá acesso completo ao seu repositório.
-    </div>
-
-    <button class="btn-gold" id="btnEntrar" onclick="entrar()">Entrar</button>
+    <p>Cole seu token do GitHub para acessar o painel de gerenciamento da DiiH Keys.</p>
+    <input type="password" class="token-input" id="tokenInput" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx"/>
+    <div class="token-warning">⚠️ Nunca compartilhe seu token. Ele da acesso ao seu repositorio.</div>
+    <button class="btn-gold full" id="btnEntrar" onclick="entrar()">Entrar</button>
   </div>
 </div>
 
 <!-- MAIN -->
 <div class="main" id="mainPanel">
 
-  <!-- STATS -->
-  <div class="stats">
-    <div class="stat-card">
-      <div class="stat-number" id="statTotal">0</div>
-      <div class="stat-label">Total de Produtos</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" id="statAtivos">0</div>
-      <div class="stat-label">Ativos</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" id="statDestaque">0</div>
-      <div class="stat-label">Em Destaque</div>
-    </div>
-    <div class="stat-card">
-      <div class="stat-number" id="statCategorias">0</div>
-      <div class="stat-label">Categorias</div>
-    </div>
+  <!-- TABS BAR -->
+  <div class="tabs-bar">
+    <button class="tab-btn active" onclick="mudarAba('dashboard')">📊 Dashboard</button>
+    <button class="tab-btn" onclick="mudarAba('produtos')">📦 Produtos</button>
+    <button class="tab-btn" onclick="mudarAba('adicionar')">➕ Adicionar</button>
   </div>
 
-  <!-- LISTA -->
-  <div class="section-title">Produtos Cadastrados</div>
-  <div class="section-sub">Gerencie seus packs. Alterações são salvas direto no GitHub.</div>
+  <!-- ABA: DASHBOARD -->
+  <div class="tab-panel active" id="aba-dashboard">
 
-  <div id="listaProdutos" class="produtos-lista">
-    <div class="loading">
-      <div class="spinner"></div>
-      <div>Carregando produtos...</div>
+    <div class="stats">
+      <div class="stat-card">
+        <div class="stat-number" id="statTotal">0</div>
+        <div class="stat-label">Total de Produtos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statAtivos">0</div>
+        <div class="stat-label">Ativos</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statDestaque">0</div>
+        <div class="stat-label">Em Destaque</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-number" id="statCategorias">0</div>
+        <div class="stat-label">Categorias</div>
+      </div>
     </div>
+
+    <div style="background:#111;border:1px solid rgba(214,179,106,0.1);border-radius:16px;padding:28px;">
+      <div style="font-size:1rem;font-weight:700;color:#d6b36a;margin-bottom:18px;">📋 Resumo por Categoria</div>
+      <div id="resumoCategorias" style="display:flex;flex-direction:column;gap:12px;"></div>
+    </div>
+
   </div>
 
-  <hr class="divider"/>
+  <!-- ABA: PRODUTOS -->
+  <div class="tab-panel" id="aba-produtos">
 
-  <!-- FORMULÁRIO -->
-  <div class="section-title">Adicionar Novo Produto</div>
-  <div class="section-sub">Preencha os campos e clique em salvar. O produto aparecerá no site automaticamente.</div>
+    <div class="filtros" id="filtros"></div>
 
-  <div class="form-card">
-    <div class="form-grid">
-
-      <div class="form-group full">
-        <label class="form-label">Nome do Pack</label>
-        <input type="text" class="form-input" id="fNome" placeholder="Ex: Grand Worship Piano"/>
+    <div id="listaProdutos" class="produtos-lista">
+      <div class="loading">
+        <div class="spinner"></div>
+        <div>Carregando...</div>
       </div>
+    </div>
 
-      <div class="form-group">
-        <label class="form-label">Categoria</label>
-        <select class="form-select" id="fCategoria">
-          <option value="">Selecione...</option>
-          <option>Piano</option>
-          <option>Keyboard</option>
-          <option>Organ</option>
-          <option>Guitar</option>
-          <option>Strings</option>
-          <option>Brass</option>
-          <option>Synth</option>
-        </select>
-      </div>
+  </div>
 
-      <div class="form-group">
-        <label class="form-label">Preço</label>
-        <input type="text" class="form-input" id="fPreco" placeholder="Ex: R$ 49,90"/>
-      </div>
+  <!-- ABA: ADICIONAR -->
+  <div class="tab-panel" id="aba-adicionar">
+    <div class="form-card">
+      <div class="form-card-title">➕ Novo Produto</div>
+      <div class="form-grid">
 
-      <div class="form-group full">
-        <label class="form-label">Tags <span>(separadas por vírgula)</span></label>
-        <input type="text" class="form-input" id="fTags" placeholder="Ex: Grand Piano, Worship, Live"/>
-      </div>
-
-      <div class="form-group full">
-        <label class="form-label">Descrição</label>
-        <textarea class="form-textarea" id="fDescricao" placeholder="Descreva o pack..."></textarea>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Nome da Imagem <span>(.jpg ou .png)</span></label>
-        <input type="text" class="form-input" id="fImagem" placeholder="Ex: grand-worship-piano.jpg" oninput="atualizarPreviews()"/>
-        <div class="form-path">Caminho: <span id="previewImagem">assets/covers/</span></div>
-      </div>
-
-      <div class="form-group">
-        <label class="form-label">Nome do Áudio <span>(.mp3)</span></label>
-        <input type="text" class="form-input" id="fAudio" placeholder="Ex: grand-worship-piano.mp3" oninput="atualizarPreviews()"/>
-        <div class="form-path">Caminho: <span id="previewAudio">assets/demos/</span></div>
-      </div>
-
-      <div class="form-group full">
-        <label class="form-label">Link de Compra <span>(Kiwify, Gumroad, etc.)</span></label>
-        <input type="text" class="form-input" id="fLink" placeholder="https://pay.kiwify.com.br/..."/>
-      </div>
-
-      <div class="form-group full">
-        <label class="form-label">Opções</label>
-        <div class="form-checkboxes">
-          <label class="form-checkbox">
-            <input type="checkbox" id="fDestaque" checked/>
-            ⭐ Exibir na página inicial (destaque)
-          </label>
-          <label class="form-checkbox">
-            <input type="checkbox" id="fAtivo" checked/>
-            ✅ Produto ativo (visível no site)
-          </label>
+        <div class="form-group full">
+          <label class="form-label">Nome do Pack</label>
+          <input type="text" class="form-input" id="fNome" placeholder="Ex: Grand Worship Piano"/>
         </div>
+
+        <div class="form-group">
+          <label class="form-label">Categoria</label>
+          <select class="form-select" id="fCategoria">
+            <option value="">Selecione...</option>
+            <option>Piano</option>
+            <option>Keyboard</option>
+            <option>Organ</option>
+            <option>Guitar</option>
+            <option>Strings</option>
+            <option>Brass</option>
+            <option>Synth</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Preco</label>
+          <input type="text" class="form-input" id="fPreco" placeholder="Ex: R$ 49,90"/>
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label">Tags <span>(separadas por virgula)</span></label>
+          <input type="text" class="form-input" id="fTags" placeholder="Ex: Grand Piano, Worship, Live"/>
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label">Descricao</label>
+          <textarea class="form-textarea" id="fDescricao" placeholder="Descreva o pack..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Nome da Imagem <span>(.jpg ou .png)</span></label>
+          <input type="text" class="form-input" id="fImagem" placeholder="Ex: grand-worship-piano.jpg" oninput="atualizarPreviews()"/>
+          <div class="form-path">📁 <span id="previewImagem">assets/covers/</span></div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Nome do Audio <span>(.mp3)</span></label>
+          <input type="text" class="form-input" id="fAudio" placeholder="Ex: grand-worship-piano.mp3" oninput="atualizarPreviews()"/>
+          <div class="form-path">🎵 <span id="previewAudio">assets/demos/</span></div>
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label">Link de Compra <span>(Kiwify, Gumroad, etc.)</span></label>
+          <input type="text" class="form-input" id="fLink" placeholder="https://pay.kiwify.com.br/..."/>
+        </div>
+
+        <div class="form-group full">
+          <label class="form-label">Opcoes</label>
+          <div class="form-checkboxes">
+            <label class="form-checkbox">
+              <input type="checkbox" id="fDestaque" checked/>
+              Exibir na home (destaque)
+            </label>
+            <label class="form-checkbox">
+              <input type="checkbox" id="fAtivo" checked/>
+              Produto ativo
+            </label>
+          </div>
+        </div>
+
       </div>
-
-    </div>
-
-    <div class="form-actions">
-      <button class="btn-outline" onclick="limparForm()">Limpar</button>
-      <button class="btn-gold" id="btnSalvar" onclick="salvarProduto()">💾 Salvar Produto</button>
+      <div class="form-actions">
+        <button class="btn-outline" onclick="limparForm()">Limpar</button>
+        <button class="btn-gold" id="btnSalvar" onclick="salvarProduto()">💾 Salvar Produto</button>
+      </div>
     </div>
   </div>
 
 </div>
 
-<!-- MODAL CONFIRMAÇÃO -->
+<!-- MODAL REMOVER -->
 <div class="modal-overlay" id="modalOverlay">
   <div class="modal">
     <h3>Remover Produto</h3>
-    <p id="modalMsg">Tem certeza que deseja remover este produto? Esta ação não pode ser desfeita.</p>
+    <p id="modalMsg">Tem certeza? Esta acao nao pode ser desfeita.</p>
     <div class="modal-actions">
       <button class="btn-outline" onclick="fecharModal()">Cancelar</button>
       <button class="btn-danger" id="btnConfirmarRemover">Remover</button>
@@ -676,324 +574,375 @@
 <div class="toast" id="toast"></div>
 
 <script>
-  const REPO_OWNER = 'rodrigo-diih';
-  const REPO_NAME  = 'diih-keys';
-  const FILE_PATH  = 'produtos.json';
+  const OWNER = 'rodrigo-diih';
+  const REPO  = 'diih-keys';
+  const PATH  = 'produtos.json';
 
   let TOKEN = '';
   let produtos = [];
-  let fileSha = '';
-  let indiceParaRemover = -1;
+  let fileSha  = '';
+  let indiceRemover = -1;
+  let filtroAtivo = 'Todos';
 
-  // ─── AUTH ───────────────────────────────────────────
-  function entrar(){
+  // AUTH
+  async function entrar(){
     const t = document.getElementById('tokenInput').value.trim();
-    if(!t){ showToast('Cole seu token do GitHub!', 'error'); return; }
+    if(!t){ showToast('Cole seu token!', 'error'); return; }
     TOKEN = t;
-    document.getElementById('btnEntrar').disabled = true;
-    document.getElementById('btnEntrar').textContent = 'Conectando...';
-    carregarProdutos();
+    setBtnEntrar(true);
+    await carregarProdutos();
   }
 
   function logout(){
-    TOKEN = '';
-    produtos = [];
-    fileSha = '';
+    TOKEN = ''; produtos = []; fileSha = '';
     document.getElementById('tokenScreen').style.display = 'flex';
     document.getElementById('mainPanel').classList.remove('visible');
     document.getElementById('btnLogout').style.display = 'none';
     document.getElementById('tokenInput').value = '';
-    document.getElementById('btnEntrar').disabled = false;
-    document.getElementById('btnEntrar').textContent = 'Entrar';
-    setStatus(false);
+    setBtnEntrar(false);
+    setStatus(null);
+  }
+
+  function setBtnEntrar(loading){
+    const b = document.getElementById('btnEntrar');
+    b.disabled = loading;
+    b.textContent = loading ? 'Conectando...' : 'Entrar';
   }
 
   function setStatus(ok, msg){
     const dot  = document.getElementById('statusDot');
     const text = document.getElementById('statusText');
-    dot.className  = 'status-dot ' + (ok ? 'connected' : ok === false ? 'error' : '');
-    text.textContent = msg || (ok ? 'Conectado' : 'Desconectado');
+    dot.className = 'status-dot' + (ok === true ? ' on' : ok === false ? ' err' : '');
+    text.textContent = msg || (ok === true ? 'Conectado' : ok === false ? 'Erro' : 'Desconectado');
   }
 
-  // ─── GITHUB API ─────────────────────────────────────
-  async function githubGet(path){
-    const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,{
-      headers:{
-        'Authorization': `token ${TOKEN}`,
-        'Accept': 'application/vnd.github.v3+json'
-      }
+  // GITHUB API
+  async function ghGet(path){
+    return fetch('https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + path,{
+      headers:{ 'Authorization':'token ' + TOKEN, 'Accept':'application/vnd.github.v3+json' }
     });
-    return r;
   }
 
-  async function githubPut(path, content, sha, message){
-    const r = await fetch(`https://api.github.com/repos/${REPO_OWNER}/${REPO_NAME}/contents/${path}`,{
-      method: 'PUT',
+  async function ghPut(path, content, sha, msg){
+    return fetch('https://api.github.com/repos/' + OWNER + '/' + REPO + '/contents/' + path,{
+      method:'PUT',
       headers:{
-        'Authorization': `token ${TOKEN}`,
-        'Accept': 'application/vnd.github.v3+json',
-        'Content-Type': 'application/json'
+        'Authorization':'token ' + TOKEN,
+        'Accept':'application/vnd.github.v3+json',
+        'Content-Type':'application/json'
       },
-      body: JSON.stringify({
-        message,
-        content: btoa(unescape(encodeURIComponent(content))),
-        sha
-      })
+      body: JSON.stringify({ message:msg, content: btoa(unescape(encodeURIComponent(content))), sha })
     });
-    return r;
   }
 
-  // ─── CARREGAR ────────────────────────────────────────
+  // CARREGAR
   async function carregarProdutos(){
     try{
-      const r = await githubGet(FILE_PATH);
-
-      if(r.status === 401){
-        showToast('Token inválido. Verifique e tente novamente.', 'error');
-        setStatus(false, 'Token inválido');
-        document.getElementById('btnEntrar').disabled = false;
-        document.getElementById('btnEntrar').textContent = 'Entrar';
-        return;
-      }
-
-      if(!r.ok) throw new Error('Erro ao carregar arquivo');
-
+      const r = await ghGet(PATH);
+      if(r.status === 401){ showToast('Token invalido!','error'); setStatus(false); setBtnEntrar(false); return; }
+      if(!r.ok) throw new Error();
       const data = await r.json();
-      fileSha = data.sha;
+      fileSha  = data.sha;
       produtos = JSON.parse(decodeURIComponent(escape(atob(data.content))));
-
-      // migrar produtos antigos sem os campos novos
-      produtos = produtos.map(p => ({
-        destaque: true,
-        ativo: true,
-        ...p
-      }));
-
+      produtos = produtos.map(p =>({ destaque:true, ativo:true, ...p }));
       setStatus(true);
       document.getElementById('tokenScreen').style.display = 'none';
       document.getElementById('mainPanel').classList.add('visible');
       document.getElementById('btnLogout').style.display = 'inline-block';
-      renderLista();
-      renderStats();
-
+      renderTudo();
     } catch(e){
-      showToast('Erro ao conectar. Verifique o token.', 'error');
-      setStatus(false, 'Erro');
-      document.getElementById('btnEntrar').disabled = false;
-      document.getElementById('btnEntrar').textContent = 'Entrar';
+      showToast('Erro ao conectar. Verifique o token.','error');
+      setStatus(false); setBtnEntrar(false);
     }
   }
 
-  // ─── SALVAR NO GITHUB ────────────────────────────────
-  async function salvarNoGithub(mensagem){
-    const json = JSON.stringify(produtos, null, 2);
-    const r = await githubPut(FILE_PATH, json, fileSha, mensagem);
-    if(!r.ok) throw new Error('Erro ao salvar');
+  async function salvarGithub(msg){
+    const r = await ghPut(PATH, JSON.stringify(produtos, null, 2), fileSha, msg);
+    if(!r.ok) throw new Error();
     const data = await r.json();
     fileSha = data.content.sha;
   }
 
-  // ─── RENDERIZAR LISTA ────────────────────────────────
-  function renderLista(){
-    const el = document.getElementById('listaProdutos');
+  // RENDER TUDO
+  function renderTudo(){
+    renderStats();
+    renderResumo();
+    renderFiltros();
+    renderLista();
+  }
 
-    if(!produtos.length){
-      el.innerHTML = `
-        <div class="empty">
-          <div class="empty-icon">🎹</div>
-          <div>Nenhum produto cadastrado ainda.</div>
-        </div>`;
+  // STATS
+  function renderStats(){
+    document.getElementById('statTotal').textContent = produtos.length;
+    document.getElementById('statAtivos').textContent = produtos.filter(p=>p.ativo).length;
+    document.getElementById('statDestaque').textContent = produtos.filter(p=>p.destaque).length;
+    document.getElementById('statCategorias').textContent = new Set(produtos.map(p=>p.categoria)).size;
+  }
+
+  // RESUMO CATEGORIAS
+  function renderResumo(){
+    const cats = {};
+    produtos.forEach(p =>{ cats[p.categoria] = (cats[p.categoria]||0)+1; });
+    const el = document.getElementById('resumoCategorias');
+    if(!Object.keys(cats).length){
+      el.innerHTML = '<div style="color:#555">Nenhum produto ainda.</div>';
+      return;
+    }
+    el.innerHTML = Object.entries(cats).map(function(entry){
+      var cat = entry[0], qtd = entry[1];
+      return '<div style="display:flex;align-items:center;gap:12px;">' +
+        '<span style="min-width:110px;color:#d6b36a;font-size:.88rem;font-weight:600">' + cat + '</span>' +
+        '<div style="flex:1;height:6px;background:#1e1e1e;border-radius:999px;overflow:hidden">' +
+          '<div style="width:' + Math.min(100,(qtd/produtos.length)*100) + '%;height:100%;background:#d6b36a;border-radius:999px"></div>' +
+        '</div>' +
+        '<span style="color:#888;font-size:.82rem;min-width:24px;text-align:right">' + qtd + '</span>' +
+      '</div>';
+    }).join('');
+  }
+
+  // FILTROS
+  function renderFiltros(){
+    const cats = ['Todos'].concat(Array.from(new Set(produtos.map(p=>p.categoria))));
+    const el   = document.getElementById('filtros');
+    el.innerHTML = cats.map(function(c){
+      return '<button class="filtro-btn' + (filtroAtivo===c?' active':'') + '" onclick="filtrar(\'' + c + '\', this)">' + c + '</button>';
+    }).join('');
+  }
+
+  function filtrar(cat, btn){
+    filtroAtivo = cat;
+    document.querySelectorAll('.filtro-btn').forEach(function(b){ b.classList.remove('active'); });
+    btn.classList.add('active');
+    renderLista();
+  }
+
+  // LISTA
+  function renderLista(){
+    const el   = document.getElementById('listaProdutos');
+    const lista = filtroAtivo === 'Todos' ? produtos : produtos.filter(function(p){ return p.categoria===filtroAtivo; });
+
+    if(!lista.length){
+      el.innerHTML = '<div class="empty"><div class="empty-icon">🎹</div><div>Nenhum produto encontrado.</div></div>';
       return;
     }
 
-    el.innerHTML = produtos.map((p, i) => `
-      <div class="produto-item">
-        <img
-          class="produto-img"
-          src="${p.imagem || ''}"
-          alt="${p.nome}"
-          onerror="this.style.background='#222';this.src='';"
-        />
-        <div class="produto-info">
-          <div class="produto-nome">${p.nome}</div>
-          <div class="produto-meta">
-            <span class="produto-categoria">${p.categoria}</span>
-            <span class="produto-preco">${p.preco || '—'}</span>
-            ${p.destaque ? '<span class="badge badge-destaque">⭐ Destaque</span>' : ''}
-            ${!p.ativo ? '<span class="badge badge-inativo">Inativo</span>' : ''}
-          </div>
-        </div>
-        <div class="produto-acoes">
-          <button class="btn-outline" onclick="toggleDestaque(${i})">
-            ${p.destaque ? 'Remover destaque' : '⭐ Destacar'}
-          </button>
-          <button class="btn-outline" onclick="toggleAtivo(${i})">
-            ${p.ativo ? 'Desativar' : 'Ativar'}
-          </button>
-          <button class="btn-danger" onclick="confirmarRemover(${i})">Remover</button>
-        </div>
-      </div>
-    `).join('');
+    el.innerHTML = lista.map(function(p){
+      var i = produtos.indexOf(p);
+      return '<div id="item-' + i + '">' +
+        '<div class="produto-item">' +
+          '<img class="produto-img" src="' + (p.imagem||'') + '" alt="' + p.nome + '" onerror="this.style.background=\'#1e1e1e\';this.removeAttribute(\'src\')"/>' +
+          '<div class="produto-info">' +
+            '<div class="produto-nome">' + p.nome + '</div>' +
+            '<div class="produto-meta">' +
+              '<span class="badge badge-cat">' + p.categoria + '</span>' +
+              '<span class="badge-preco">' + (p.preco||'—') + '</span>' +
+              (p.destaque ? '<span class="badge badge-dest">⭐ Destaque</span>' : '') +
+              (!p.ativo ? '<span class="badge badge-inativo">Inativo</span>' : '') +
+            '</div>' +
+          '</div>' +
+          '<div class="produto-acoes">' +
+            '<button class="btn-edit sm" onclick="toggleEdit(' + i + ')">✏️ Editar</button>' +
+            '<button class="btn-outline sm" onclick="toggleDestaque(' + i + ')">' + (p.destaque?'Remover destaque':'⭐ Destacar') + '</button>' +
+            '<button class="btn-outline sm" onclick="toggleAtivo(' + i + ')">' + (p.ativo?'Desativar':'Ativar') + '</button>' +
+            '<button class="btn-danger sm" onclick="confirmarRemover(' + i + ')">🗑 Remover</button>' +
+          '</div>' +
+        '</div>' +
+        '<div class="edit-panel" id="edit-' + i + '">' +
+          '<div style="font-size:.9rem;font-weight:700;color:#64b5f6;margin-bottom:16px;">✏️ Editando: ' + p.nome + '</div>' +
+          '<div class="form-grid">' +
+            '<div class="form-group full"><label class="form-label">Nome</label><input type="text" class="form-input" id="e' + i + '-nome" value="' + (p.nome||'') + '"/></div>' +
+            '<div class="form-group"><label class="form-label">Categoria</label><select class="form-select" id="e' + i + '-cat">' +
+              ['Piano','Keyboard','Organ','Guitar','Strings','Brass','Synth'].map(function(c){ return '<option' + (p.categoria===c?' selected':'') + '>' + c + '</option>'; }).join('') +
+            '</select></div>' +
+            '<div class="form-group"><label class="form-label">Preco</label><input type="text" class="form-input" id="e' + i + '-preco" value="' + (p.preco||'') + '"/></div>' +
+            '<div class="form-group full"><label class="form-label">Tags <span>(separadas por virgula)</span></label><input type="text" class="form-input" id="e' + i + '-tags" value="' + ((p.tags||[]).join(', ')) + '"/></div>' +
+            '<div class="form-group full"><label class="form-label">Descricao</label><textarea class="form-textarea" id="e' + i + '-desc">' + (p.descricao||'') + '</textarea></div>' +
+            '<div class="form-group"><label class="form-label">Imagem</label><input type="text" class="form-input" id="e' + i + '-img" value="' + (p.imagem||'') + '"/></div>' +
+            '<div class="form-group"><label class="form-label">Audio</label><input type="text" class="form-input" id="e' + i + '-audio" value="' + (p.audio||'') + '"/></div>' +
+            '<div class="form-group full"><label class="form-label">Link de Compra</label><input type="text" class="form-input" id="e' + i + '-link" value="' + (p.link||'') + '"/></div>' +
+            '<div class="form-group full"><div class="form-checkboxes">' +
+              '<label class="form-checkbox"><input type="checkbox" id="e' + i + '-dest"' + (p.destaque?' checked':'') + '/> ⭐ Destaque</label>' +
+              '<label class="form-checkbox"><input type="checkbox" id="e' + i + '-ativo"' + (p.ativo?' checked':'') + '/> ✅ Ativo</label>' +
+            '</div></div>' +
+          '</div>' +
+          '<div class="form-actions">' +
+            '<button class="btn-outline" onclick="toggleEdit(' + i + ')">Cancelar</button>' +
+            '<button class="btn-gold" onclick="salvarEdicao(' + i + ')">💾 Salvar Alteracoes</button>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
   }
 
-  // ─── STATS ───────────────────────────────────────────
-  function renderStats(){
-    document.getElementById('statTotal').textContent = produtos.length;
-    document.getElementById('statAtivos').textContent = produtos.filter(p => p.ativo).length;
-    document.getElementById('statDestaque').textContent = produtos.filter(p => p.destaque).length;
-    const cats = new Set(produtos.map(p => p.categoria));
-    document.getElementById('statCategorias').textContent = cats.size;
+  // TOGGLE EDIT
+  function toggleEdit(i){
+    document.getElementById('edit-' + i).classList.toggle('open');
   }
 
-  // ─── TOGGLE DESTAQUE ─────────────────────────────────
+  // SALVAR EDICAO
+  async function salvarEdicao(i){
+    const nome = document.getElementById('e' + i + '-nome').value.trim();
+    if(!nome){ showToast('O nome nao pode ser vazio!','error'); return; }
+
+    const novoDestaque = document.getElementById('e' + i + '-dest').checked;
+    const destaques = produtos.filter(function(p,idx){ return p.destaque && idx!==i; }).length;
+    if(novoDestaque && destaques >= 6){
+      showToast('Maximo de 6 produtos em destaque!','error'); return;
+    }
+
+    produtos[i] = Object.assign({}, produtos[i], {
+      nome:      nome,
+      categoria: document.getElementById('e' + i + '-cat').value,
+      preco:     document.getElementById('e' + i + '-preco').value.trim(),
+      tags:      document.getElementById('e' + i + '-tags').value.split(',').map(function(t){ return t.trim(); }).filter(Boolean),
+      descricao: document.getElementById('e' + i + '-desc').value.trim(),
+      imagem:    document.getElementById('e' + i + '-img').value.trim(),
+      audio:     document.getElementById('e' + i + '-audio').value.trim(),
+      link:      document.getElementById('e' + i + '-link').value.trim(),
+      destaque:  novoDestaque,
+      ativo:     document.getElementById('e' + i + '-ativo').checked
+    });
+
+    try{
+      await salvarGithub('Admin: editou "' + nome + '"');
+      renderTudo();
+      showToast('"' + nome + '" atualizado!', 'success');
+    } catch(e){
+      showToast('Erro ao salvar.','error');
+    }
+  }
+
+  // TOGGLE DESTAQUE
   async function toggleDestaque(i){
-    const destaques = produtos.filter(p => p.destaque).length;
-    if(!produtos[i].destaque && destaques >= 6){
-      showToast('Máximo de 6 produtos em destaque na home!', 'error');
-      return;
+    if(!produtos[i].destaque && produtos.filter(function(p){ return p.destaque; }).length >= 6){
+      showToast('Maximo de 6 produtos em destaque!','error'); return;
     }
     produtos[i].destaque = !produtos[i].destaque;
     try{
-      await salvarNoGithub(`Admin: ${produtos[i].destaque ? 'destacou' : 'removeu destaque de'} "${produtos[i].nome}"`);
-      renderLista();
-      renderStats();
-      showToast('Salvo com sucesso!', 'success');
-    } catch(e){
-      showToast('Erro ao salvar.', 'error');
-    }
+      await salvarGithub('Admin: destaque de "' + produtos[i].nome + '"');
+      renderTudo();
+      showToast('Salvo!','success');
+    } catch(e){ showToast('Erro ao salvar.','error'); }
   }
 
-  // ─── TOGGLE ATIVO ────────────────────────────────────
+  // TOGGLE ATIVO
   async function toggleAtivo(i){
     produtos[i].ativo = !produtos[i].ativo;
     try{
-      await salvarNoGithub(`Admin: ${produtos[i].ativo ? 'ativou' : 'desativou'} "${produtos[i].nome}"`);
-      renderLista();
-      renderStats();
-      showToast('Salvo com sucesso!', 'success');
-    } catch(e){
-      showToast('Erro ao salvar.', 'error');
-    }
+      await salvarGithub('Admin: ' + (produtos[i].ativo?'ativou':'desativou') + ' "' + produtos[i].nome + '"');
+      renderTudo();
+      showToast('Salvo!','success');
+    } catch(e){ showToast('Erro ao salvar.','error'); }
   }
 
-  // ─── REMOVER ─────────────────────────────────────────
+  // REMOVER
   function confirmarRemover(i){
-    indiceParaRemover = i;
-    document.getElementById('modalMsg').textContent =
-      `Tem certeza que deseja remover "${produtos[i].nome}"? Esta ação não pode ser desfeita.`;
+    indiceRemover = i;
+    document.getElementById('modalMsg').textContent = 'Tem certeza que deseja remover "' + produtos[i].nome + '"? Esta acao nao pode ser desfeita.';
     document.getElementById('btnConfirmarRemover').onclick = removerProduto;
     document.getElementById('modalOverlay').classList.add('show');
   }
 
   function fecharModal(){
     document.getElementById('modalOverlay').classList.remove('show');
-    indiceParaRemover = -1;
+    indiceRemover = -1;
   }
 
   async function removerProduto(){
     fecharModal();
-    const nome = produtos[indiceParaRemover].nome;
-    produtos.splice(indiceParaRemover, 1);
+    const nome = produtos[indiceRemover].nome;
+    produtos.splice(indiceRemover, 1);
     try{
-      await salvarNoGithub(`Admin: removeu "${nome}"`);
-      renderLista();
-      renderStats();
-      showToast(`"${nome}" removido com sucesso!`, 'success');
-    } catch(e){
-      showToast('Erro ao remover produto.', 'error');
-    }
+      await salvarGithub('Admin: removeu "' + nome + '"');
+      renderTudo();
+      showToast('"' + nome + '" removido!','success');
+    } catch(e){ showToast('Erro ao remover.','error'); }
   }
 
-  // ─── ADICIONAR ───────────────────────────────────────
+  // ADICIONAR
   async function salvarProduto(){
     const nome      = document.getElementById('fNome').value.trim();
     const categoria = document.getElementById('fCategoria').value;
-    const preco     = document.getElementById('fPreco').value.trim();
-    const tags      = document.getElementById('fTags').value.trim();
-    const descricao = document.getElementById('fDescricao').value.trim();
-    const imagem    = document.getElementById('fImagem').value.trim();
-    const audio     = document.getElementById('fAudio').value.trim();
-    const link      = document.getElementById('fLink').value.trim();
-    const destaque  = document.getElementById('fDestaque').checked;
-    const ativo     = document.getElementById('fAtivo').checked;
+    if(!nome || !categoria){ showToast('Preencha nome e categoria!','error'); return; }
 
-    if(!nome || !categoria){
-      showToast('Preencha pelo menos o nome e a categoria!', 'error');
-      return;
+    const destaque = document.getElementById('fDestaque').checked;
+    if(destaque && produtos.filter(function(p){ return p.destaque; }).length >= 6){
+      showToast('Maximo de 6 produtos em destaque!','error'); return;
     }
 
-    if(destaque && produtos.filter(p => p.destaque).length >= 6){
-      showToast('Máximo de 6 produtos em destaque. Desmarque "destaque" ou remova outro.', 'error');
-      return;
-    }
+    const imagem = document.getElementById('fImagem').value.trim();
+    const audio  = document.getElementById('fAudio').value.trim();
 
-    const novoProduto = {
-      nome,
-      categoria,
-      tags: tags ? tags.split(',').map(t => t.trim()).filter(Boolean) : [],
-      descricao,
-      preco,
-      imagem: imagem ? `assets/covers/${imagem}` : '',
-      audio:  audio  ? `assets/demos/${audio}`   : '',
-      link:   link   || '#',
-      destaque,
-      ativo
+    var novo = {
+      nome:      nome,
+      categoria: categoria,
+      tags:      document.getElementById('fTags').value.split(',').map(function(t){ return t.trim(); }).filter(Boolean),
+      descricao: document.getElementById('fDescricao').value.trim(),
+      preco:     document.getElementById('fPreco').value.trim(),
+      imagem:    imagem ? 'assets/covers/' + imagem : '',
+      audio:     audio  ? 'assets/demos/' + audio   : '',
+      link:      document.getElementById('fLink').value.trim() || '#',
+      destaque:  destaque,
+      ativo:     document.getElementById('fAtivo').checked
     };
 
-    produtos.push(novoProduto);
-
+    produtos.push(novo);
     const btn = document.getElementById('btnSalvar');
-    btn.disabled = true;
-    btn.textContent = 'Salvando...';
+    btn.disabled = true; btn.textContent = 'Salvando...';
 
     try{
-      await salvarNoGithub(`Admin: adicionou "${nome}"`);
-      renderLista();
-      renderStats();
+      await salvarGithub('Admin: adicionou "' + nome + '"');
+      renderTudo();
       limparForm();
-      showToast(`"${nome}" adicionado com sucesso!`, 'success');
+      mudarAba('produtos');
+      showToast('"' + nome + '" adicionado!','success');
     } catch(e){
       produtos.pop();
-      showToast('Erro ao salvar produto.', 'error');
+      showToast('Erro ao salvar.','error');
     }
 
-    btn.disabled = false;
-    btn.textContent = '💾 Salvar Produto';
+    btn.disabled = false; btn.textContent = '💾 Salvar Produto';
   }
 
-  // ─── UTILS ───────────────────────────────────────────
+  // UTILS
+  function mudarAba(id){
+    var ids = ['dashboard','produtos','adicionar'];
+    document.querySelectorAll('.tab-btn').forEach(function(b, i){
+      b.classList.toggle('active', ids[i] === id);
+    });
+    document.querySelectorAll('.tab-panel').forEach(function(p){ p.classList.remove('active'); });
+    document.getElementById('aba-' + id).classList.add('active');
+  }
+
   function limparForm(){
-    ['fNome','fCategoria','fPreco','fTags','fDescricao','fImagem','fAudio','fLink']
-      .forEach(id => document.getElementById(id).value = '');
+    ['fNome','fCategoria','fPreco','fTags','fDescricao','fImagem','fAudio','fLink'].forEach(function(id){
+      document.getElementById(id).value = '';
+    });
     document.getElementById('fDestaque').checked = true;
-    document.getElementById('fAtivo').checked = true;
+    document.getElementById('fAtivo').checked    = true;
     atualizarPreviews();
   }
 
   function atualizarPreviews(){
-    const img   = document.getElementById('fImagem').value.trim();
-    const audio = document.getElementById('fAudio').value.trim();
-    document.getElementById('previewImagem').textContent = `assets/covers/${img}`;
-    document.getElementById('previewAudio').textContent  = `assets/demos/${audio}`;
+    document.getElementById('previewImagem').textContent = 'assets/covers/' + document.getElementById('fImagem').value.trim();
+    document.getElementById('previewAudio').textContent  = 'assets/demos/'  + document.getElementById('fAudio').value.trim();
   }
 
-  function showToast(msg, type=''){
+  function showToast(msg, type){
+    type = type || '';
     const t = document.getElementById('toast');
     t.textContent = msg;
-    t.className = `toast ${type} show`;
-    setTimeout(() => t.classList.remove('show'), 3500);
+    t.className = 'toast ' + type + ' show';
+    setTimeout(function(){ t.classList.remove('show'); }, 3500);
   }
 
-  // fechar modal clicando fora
-  document.getElementById('modalOverlay').addEventListener('click', e => {
+  document.getElementById('modalOverlay').addEventListener('click', function(e){
     if(e.target === e.currentTarget) fecharModal();
   });
 
-  // enter no campo token
-  document.getElementById('tokenInput').addEventListener('keydown', e => {
+  document.getElementById('tokenInput').addEventListener('keydown', function(e){
     if(e.key === 'Enter') entrar();
   });
 </script>
-
 </body>
 </html>
