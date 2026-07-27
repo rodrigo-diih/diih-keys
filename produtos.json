@@ -32,7 +32,7 @@
     "link": "#"
   },
   {
-    "destaque": true,
+    "destaque": false,
     "ativo": false,
     "nome": "Vintage Upright",
     "categoria": "Piano",
